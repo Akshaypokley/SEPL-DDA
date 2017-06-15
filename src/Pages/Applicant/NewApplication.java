@@ -1,4 +1,4 @@
-package Pages.Proposal;
+package Pages.Applicant;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

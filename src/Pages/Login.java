@@ -12,6 +12,8 @@ public class Login {
 
 
     WebDriver driver;
+    @FindBy(xpath = ".//*[@id='imgApprovalLayout']/div/a/img")
+    WebElement RegistrationLink;
 
     @FindBy(xpath = ".//*[@id='form1']/div[3]/div[2]/div/div[1]/div/img[1]")
     WebElement Logo;
@@ -39,7 +41,10 @@ public class Login {
         if(!Logo.isDisplayed())
             throw  new IllegalStateException("This is not login page");
     }
-
+    public void setRegistrationLink()
+    {
+        RegistrationLink.click();
+    }
     public WebElement getLogo()
     {
         return Logo;

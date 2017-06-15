@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 public class LTPRegistration {
     WebDriver driver;
 
-    @FindBy(xpath = "//div[3]/div[2]/div/div[1]/div/img[1]")
-    WebElement HomeLogo;
+    @FindBy(xpath = ".//*[@id='dvwelcomeRegistration']/div/a/h2")
+    WebElement RegText;
 
     @FindBy(xpath =".//*[@id='imgPhoto']")
     WebElement ProfilePhoto;
@@ -37,8 +37,7 @@ public class LTPRegistration {
    /* attachments*/
 
 
-    @FindBy(xpath = ".//*[@id='imgApprovalLayout']/div/a/img")
-    WebElement RegistrationLink;
+
 
     @FindBy(xpath = ".//*[@id='cboInital']")
     WebElement PriFix ;
@@ -117,9 +116,11 @@ public class LTPRegistration {
     {
         this.driver=driver;
         PageFactory.initElements(driver,this);
-        /*if(!HomeLogo.isDisplayed())
-            throw new IllegalStateException("This Not Home Page ");*/
+
+        if(!RegText.isDisplayed())
+            throw new IllegalStateException("This Not Home Page ");
     }
+
 
     public void ClickIdDoc()
     {
@@ -173,14 +174,11 @@ public class LTPRegistration {
         UploadImage.sendKeys(pho);
     }
 
-    public void setRegistrationLink()
-    {
-        RegistrationLink.click();
-    }
 
-    public WebElement getHomeLogo()
+
+    public WebElement getRegText()
     {
-        return HomeLogo;
+        return RegText;
     }
 
     public void setProfilePhoto( String Photo)

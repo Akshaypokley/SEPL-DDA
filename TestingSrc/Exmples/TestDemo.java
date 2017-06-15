@@ -1,7 +1,6 @@
 package Exmples;
-
 import Pages.Login;
-import Pages.Proposal.NewApplication;
+import Pages.Applicant.NewApplication;
 import jxl.Workbook;
 import jxl.format.CellFormat;
 import jxl.read.biff.BiffException;
@@ -9,7 +8,6 @@ import jxl.write.*;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,11 +24,11 @@ import java.io.IOException;
 import static Utilites.OpenBrowser.GetUrl;
 import static Utilites.OpenBrowser.openBrowser;
 import static jxl.format.Colour.*;
-
 /**
- * Created by akshay.pokley on 6/3/2017.
+ * Created by akshay.pokley on 6/13/2017.
  */
-public class LoginTest {
+public class TestDemo {
+
 
     static WebDriver driver;
     public Label l4;
@@ -46,9 +44,9 @@ public class LoginTest {
     public WritableSheet sourceSheet;
     public static WritableSheet targetSheet;
     public Workbook sourceDocument;
-/*****************************************************************/
+    /*****************************************************************/
     private static int n = 2;
-    private static int j = 2;
+    private static int j = 1;
     public static  String Result;
     public static  String k;
     public static String ResultPass1="Username";
@@ -58,19 +56,26 @@ public class LoginTest {
     static int LastRow;
     static int SetBord;
     static int RowIncr;
+
+
+
+
+
+
+
     @BeforeTest
     public  void ExcelWdata() throws IOException, BiffException, WriteException {
 
-        sourceDocument = Workbook.getWorkbook(new File("Excelsheet/TestCase.xls"));
+        sourceDocument = Workbook.getWorkbook(new File("Excelsheet/TestCaseDemo.xls"));
         writableTempSource = Workbook.createWorkbook(new File("Excelsheet/temp.xls"), sourceDocument);
-        copyDocument = Workbook.createWorkbook(new File("Excelsheet/LoginTestReport.xls"));
+        copyDocument = Workbook.createWorkbook(new File("Excelsheet/TestReport.xls"));
         sourceSheet = writableTempSource.getSheet(0);
         targetSheet = copyDocument.createSheet("sheet 1", 0);
 
         WritableFont cellFont = new WritableFont(WritableFont.TIMES, 11);
         cellFont.setBoldStyle(WritableFont.BOLD);
 /************************************************************************************************/
-        WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 10);
+        WritableFont cellFont2 = new WritableFont(WritableFont.COURIER, 10);
         cellFont2.setColour(BLACK);
         cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
@@ -78,14 +83,14 @@ public class LoginTest {
         cellFormat1.setWrap(true);
 /*******************************************************************************************************/
 /************************************************************************************************/
-        WritableFont cellFont3 = new WritableFont(WritableFont.TIMES, 10);
+        WritableFont cellFont3 = new WritableFont(WritableFont.COURIER, 10);
         cellFont3.setColour(RED);
         cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
-        WritableFont cellFont4 = new WritableFont(WritableFont.TIMES, 10);
+        WritableFont cellFont4 = new WritableFont(WritableFont.COURIER, 10);
         cellFont4.setColour(GREEN);
         cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
@@ -100,7 +105,6 @@ public class LoginTest {
         cellFormat2 = new WritableCellFormat(cellFont);
         cellFormat2.setBackground(RED);
         //cellFormat.setAlignment(jxl.format.Alignment.getAlignment(20));
-
         WritableFont cellFont5 = new WritableFont(WritableFont.TIMES, 18);
         cellFont5.setColour(BLACK);
         cellFont5.setBoldStyle(WritableFont.BOLD);
@@ -108,7 +112,7 @@ public class LoginTest {
         cellFormat5.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat5.setBackground(SKY_BLUE);
         cellFormat5.setAlignment(Alignment.CENTRE);
-        cellFormat5.setWrap(true);
+
         //  sheet.addCell(new Label(col, 1, "CCCCC", cellFormat));
 
         for (int row = 0; row < sourceSheet.getRows(); row++) {
@@ -127,18 +131,15 @@ public class LoginTest {
                 Label l3=new Label(6,1,"Result",cellFormat);
                 //Label l4=new Label(4,row,"",cellFormat);
                 int widthInChars = 36;
-                int widthInChars2 =20;
+                int widthInChars2 = 20;
                 targetSheet.setColumnView(4, widthInChars);
                 targetSheet.setColumnView(5, widthInChars);
-                targetSheet.setColumnView(6, widthInChars);
-                targetSheet.setColumnView(0, widthInChars2);
-                targetSheet.setColumnView(2, widthInChars2);
 /*-----------------------------------------------------------------------------------------------------------------------*/
+                targetSheet.setColumnView(0, widthInChars2);
                 targetSheet.mergeCells(0, 0, 6, 0);
                 Label lable = new Label (0, 0,
                         "Login window test  report",cellFormat5);
                 targetSheet.addCell(lable);
-
                 targetSheet.addCell(l2);
                 targetSheet.addCell(l3);
                 //targetSheet.addCell(l4);
@@ -166,124 +167,125 @@ public class LoginTest {
         //   RowIncr=LastRow;
         if (testcaseName != null && testcaseName.length() != 0 ) {
 
-                driver = openBrowser("chrome");
-                GetUrl("url");
-                SetBord = j++;
-                Label l7 = new Label(5, SetBord, "", cellFormat1);
-                targetSheet.addCell(l7);
-                Label l8 = new Label(6, SetBord, "", cellFormat1);
-                targetSheet.addCell(l8);
-      } else {
+            driver = openBrowser("chrome");
+            GetUrl("url");
+            SetBord = j++;
+            Label l7 = new Label(5, SetBord, "", cellFormat1);
+            targetSheet.addCell(l7);
+            Label l8 = new Label(6, SetBord, "", cellFormat1);
+            targetSheet.addCell(l8);
+        } else {
             SetBord = j++;
 
 
         }
-try {
-    Login login = new Login(driver);
-    switch (keyword.toUpperCase()) {
-        case "CLICK":
-            switch (objectName) {
-                case "Submit":
+        try {
+            Login login = new Login(driver);
+            switch (keyword.toUpperCase()) {
+                case "CLICK":
+                    switch (objectName) {
+                        case "Submit":
 
-                    login.ClickLoginBtn();
-                    Actual2 = "Alert messsage should be displayed";
-                    // if (driver.findElement(By.xpath("./*//*[@id='lblULBName']")).getText().equals("Delhi Development Authority")) {
-                    try {
-                        if ((ExpectedConditions.alertIsPresent()) == null) {
-                            System.out.println("alert was not present");
-                            if (driver.findElement(By.xpath(".*//*//**//*[@id='lblULBName']")).getText().equals("Delhi Development Authority"))
-                                Result = "pass";
-                        } else {
-                            Alert alert = driver.switchTo().alert();
-                            Actual = driver.switchTo().alert().getText();
-                            if (Actual.equals(Expeted) || Actual2.equals(Expeted)) {
-                                Result = "pass";
-                            } else {
-                                Result = "Fail";
+                            login.ClickLoginBtn();
+                            Actual2 = "Alert messsage should be displayed";
+                            // if (driver.findElement(By.xpath("./*//*[@id='lblULBName']")).getText().equals("Delhi Development Authority")) {
+                            try {
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    System.out.println("alert was not present");
+                                    if (driver.findElement(By.xpath(".*//*//**//*[@id='lblULBName']")).getText().equals("Delhi Development Authority"))
+                                        Result = "pass";
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+                                    Actual = driver.switchTo().alert().getText();
+                                    if (Actual.equals(Expeted) || Actual2.equals(Expeted)) {
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                    }
+                                    System.out.println(Actual);
+                                    //    Thread.sleep(50);
+                                    alert.accept();
+
+                                }
+
+                            } catch (Throwable e) {
                             }
-                            System.out.println(Actual);
-                            //    Thread.sleep(50);
-                            alert.accept();
 
-                        }
 
-                    } catch (Throwable e) {
                     }
 
+                case "SETTEXT":
+                    NewApplication newApplication = new NewApplication(driver); //Set text on control
+                    switch (objectName) {
+
+                        case "UserName":
+                            k = login.getLoginFLabel().getText();
+                            if (ResultPass1.equals(k))
+                                Actual2 = "Field Should Be Present";
+                            login.setLoginF(value);
+                            Result = "pass";
+                            break;
+                        case "password":
+                            k = login.getpassFLabel().getText();
+                            if (ResultFail1.equals(k))
+                                login.setpassF(value);
+                            Result = "pass";
+                            Actual2 = "Field Should Be Present";
+                            System.out.println(value);
+                            break;
+                    }
+
+                default:
+                    break;
+            }
+
+
+            if (testcaseName.isEmpty()) {
+                LastRow = n++;
+                if (Result.equals("pass")) {
+                    Label l5 = new Label(5, LastRow, "As Exptected", cellFormat1);
+                    targetSheet.addCell(l5);
+                    Label l6 = new Label(6, LastRow, "PASS", cellFormat4);
+                    targetSheet.addCell(l6);
+                } else {
+
+                    Label l5 = new Label(5, LastRow, "Due To-->" + "" + Actual, cellFormat1);
+                    targetSheet.addCell(l5);
+                    Label l6 = new Label(6, LastRow, "FAIL", cellFormat3);
+                    targetSheet.addCell(l6);
+                }
+            } else {
+                LastRow = n++;
 
             }
 
-        case "SETTEXT":
-            NewApplication newApplication = new NewApplication(driver); //Set text on control
-            switch (objectName) {
 
-                case "UserName":
-                    k = login.getLoginFLabel().getText();
-                    if (ResultPass1.equals(k))
-                        Actual2 = "Field Should Be Present";
-                    login.setLoginF(value);
-                    Result = "pass";
-                    break;
-                case "password":
-                    k = login.getpassFLabel().getText();
-                    if (ResultFail1.equals(k))
-                        login.setpassF(value);
-                    Result = "pass";
-                    Actual2 = "Field Should Be Present";
-                    System.out.println(value);
-                    break;
-            }
-
-        default:
-            break;
-    }
-
-
-    if (testcaseName.isEmpty()) {
-        LastRow = n++;
-        if (Result.equals("pass")) {
-            Label l5 = new Label(5, LastRow, "Same As Exptected", cellFormat1);
-            targetSheet.addCell(l5);
-            Label l6 = new Label(6, LastRow, "PASS", cellFormat4);
-            targetSheet.addCell(l6);
-        } else {
-            Label l5 = new Label(5, LastRow, "Not Same As Exptected-->" + "" + Actual, cellFormat1);
-            targetSheet.addCell(l5);
-            Label l6 = new Label(6, LastRow, "FAIL", cellFormat3);
-            targetSheet.addCell(l6);
-        }
-    } else {
-        LastRow = n++;
-
-    }
-
-
-}catch (NullPointerException e){}
+        }catch (NullPointerException e){}
 
     }
 
     @DataProvider(name="hybridData")
     public Object[][] getDataFromDataprovider() throws IOException {
         Object[][] object = null;
-        FileInputStream fis = new FileInputStream("Excelsheet/TestCase.xls");
+        FileInputStream fis = new FileInputStream("Excelsheet/TestCaseDemo.xls");
         HSSFWorkbook wb = new HSSFWorkbook(fis);
         HSSFSheet sh = wb.getSheet("TestCase");
-      //  HSSFRow rows = sh.getRow(1);
+        //  HSSFRow rows = sh.getRow(1);
 //Read keyword sheet
 //Find number of rows in Expl.excel file
         int rowCount =sh.getLastRowNum()-sh.getFirstRowNum();
         System.out.println(rowCount);
-        object = new Object[rowCount-1][5];
-        for (int i = 1; i < rowCount-1; i++) {
+        object = new Object[rowCount][5];
+        for (int i = 1; i < rowCount; i++) {
 
-       HSSFRow row = sh.getRow(i + 1);
+            HSSFRow row = sh.getRow(i+1);
 
 
             for (int j = 0; j < row.getLastCellNum(); j++) {
                 System.out.println(row.getCell(j).toString());
-                    object[i][j] = row.getCell(j).toString();
+                object[i][j] = row.getCell(j).toString();
 
-                }
+            }
 
 
         }
