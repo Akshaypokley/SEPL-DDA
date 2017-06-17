@@ -1,4 +1,4 @@
-package Exmples;
+package TestScript;
 import Pages.Login;
 import Pages.Applicant.NewApplication;
 import jxl.Workbook;
@@ -27,7 +27,7 @@ import static jxl.format.Colour.*;
 /**
  * Created by akshay.pokley on 6/13/2017.
  */
-public class TestDemo {
+public class LoginTest {
 
 
     static WebDriver driver;
@@ -55,8 +55,7 @@ public class TestDemo {
     public static String Actual2;
     static int LastRow;
     static int SetBord;
-    static  String Value;
-    static String AlrMESS="Alert was not open ";
+    static int RowIncr;
 
 
 
@@ -76,7 +75,7 @@ public class TestDemo {
         WritableFont cellFont = new WritableFont(WritableFont.TIMES, 11);
         cellFont.setBoldStyle(WritableFont.BOLD);
 /************************************************************************************************/
-        WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont2 = new WritableFont(WritableFont.COURIER, 10);
         cellFont2.setColour(BLACK);
         cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
@@ -84,14 +83,14 @@ public class TestDemo {
         cellFormat1.setWrap(true);
 /*******************************************************************************************************/
 /************************************************************************************************/
-        WritableFont cellFont3 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont3 = new WritableFont(WritableFont.COURIER, 10);
         cellFont3.setColour(RED);
         cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
-        WritableFont cellFont4 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont4 = new WritableFont(WritableFont.COURIER, 10);
         cellFont4.setColour(GREEN);
         cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
@@ -220,77 +219,16 @@ public class TestDemo {
                     switch (objectName) {
 
                         case "UserName":
-                            k = login.getLoginFLabel().getText();
-                            if (ResultPass1.equals(k))
-                                login.setLoginF(value);
-                            try {
-                                if ((ExpectedConditions.alertIsPresent()) == null) {
-                             Result="Fail";
-                             Actual=AlrMESS;
 
-                                } else {
-                                    Alert alert = driver.switchTo().alert();
-                                    Actual = driver.switchTo().alert().getText();
-
-                                    alert.accept();
-
-                                }
-                            }catch (Throwable e)
-                            {}
-
-                            Value=login.getLoginF().getAttribute("value");
-                            System.out.println(Value);
-                            if (Value.equals(null)) {
-                                try{
-                                if ((ExpectedConditions.alertIsPresent()) == null) {
-                                    Result = "Fail";
-                                    Actual = AlrMESS;
-                                } else {
-                                    Alert alert = driver.switchTo().alert();
-                                    Actual = driver.switchTo().alert().getText();
-                            if (Actual.equals(Expeted))
-                                Result="Pass";
-                            else
-                                Result="Fail";
-                                    alert.accept();
-                                }
-                                System.out.println("Special chrater should not allowed ");
-                            }catch (Throwable e)
-                                {}}
-                            else
-
-                            if (Value.equals(value)) {
-                                Result = "pass";
-                                System.out.println("User name have with the combination of char and digit");
-                            }     else {
-                                try{
-                                if ((ExpectedConditions.alertIsPresent()) != null) {
-                                    Result = "Fail";
-                                    Actual = AlrMESS;
-                                } else {
-                                    Alert alert = driver.switchTo().alert();
-                                    Actual = driver.switchTo().alert().getText();
-                                    if (Actual.equals(Expeted))
-                                        Result="Pass";
-                                    else
-                                        Result="Fail";
-                                    alert.accept();
-                            }
-                            }catch (Throwable e){}}
                             break;
                         case "password":
                             k = login.getpassFLabel().getText();
-
-                                if (value.isEmpty()) {
-                                    Result = "Fail";
-                                } else
-                                {
-                                    if (ResultFail1.equals(k))
+                            if (ResultFail1.equals(k))
                                 login.setpassF(value);
-                                    Result = "pass";
-                                        Actual2 = "Field Should Be Present";
-                                        System.out.println(value);
-                            } break;
+                            Result = "pass";
+                            Actual2 = "Field Should Be Present";
+                            System.out.println(value);
+                            break;
                     }
 
                 default:
@@ -340,7 +278,7 @@ public class TestDemo {
 
 
             for (int j = 0; j < row.getLastCellNum(); j++) {
-              //  System.out.println(row.getCell(j).toString());
+                System.out.println(row.getCell(j).toString());
                 object[i][j] = row.getCell(j).toString();
 
             }

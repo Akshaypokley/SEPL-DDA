@@ -35,6 +35,7 @@ public class Login {
 
 
 
+
     public Login (WebDriver driver)
     { this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -70,5 +71,10 @@ public class Login {
     public  void ClickLoginBtn()
     {
         loginBtn.click();
+    }
+
+    public  WebElement getLoginF()
+    {
+        return LoginF;
     }
 }

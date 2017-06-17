@@ -85,7 +85,7 @@ public class ApplicantInfo {
 
     public void  setEmail(String email )
     {
-        PinNo.sendKeys(email);
+        Email.sendKeys(email);
     }
     public  void setClickSave()
     {
