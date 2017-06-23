@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static Utilites.AttachFunction.AttachFuntn;
 import static Utilites.BeforeWH.BeforeWH;
@@ -62,6 +63,7 @@ public class DraftTest {
     static int LastRow;
     static int SetBord;
     static int RowIncr;
+ static ApplicantInfo applicantInfo;
     @BeforeTest
     public  void ExcelWdata() throws IOException, BiffException, WriteException {
 
@@ -181,6 +183,7 @@ public class DraftTest {
             Label l8 = new Label(6, SetBord, "", cellFormat1);
             targetSheet.addCell(l8);
         } else {
+
             SetBord = j++;
 
 
@@ -191,6 +194,7 @@ public class DraftTest {
 
             switch (keyword.toUpperCase()) {
 
+
                 case "CLICK":
                     String FilePath = value;
                     String WinHandleBefore1 = driver.getWindowHandle();
@@ -198,14 +202,18 @@ public class DraftTest {
                     switch (objectName) {
 
                         case "FileNo":
-                            List<WebElement> cells = driver.findElements(By.xpath("./*//*[@id='ListProposalGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr/td[3]"));
-                            for (WebElement cell : cells) {
-                                //String FilesNu = cell.getText();
-                                if (cell.getText().equals(value)) {
-                                    cell.click();
-                                }
-                            }
+
+                            driver.findElement(By.xpath(".//*[@id='ListProposalGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr[16]/td[3]/span[1]")).click();
                             break;
+                            /*List<WebElement> cells = driver.findElements(By.xpath("./*//*[@id='ListProposalGrid']/tbody/tr[2]/td[2]/div/div[1]/table/tbody/tr/td/span"));
+
+                            for (WebElement cell : cells) {
+                                String fiels=cell.getText();
+                                System.out.println(fiels);
+
+                                if (fiels.equals(value)) {
+                                }   cell.click();*/
+
 
                             case "Document":
                                 AttachDrawing attachDrawing=new AttachDrawing(driver);
@@ -224,14 +232,20 @@ public class DraftTest {
                                 driver.switchTo().frame(" alert1497520850259");
 
                                 attachDrawing.clickOk();
-
-break;
+                                break;
                         case "ApplicationInfo":
-                            ApplicantInfo applicantInfo=new ApplicantInfo(driver);
-                            applicantInfo.getInfoALink();
 
+                            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                            applicantInfo=new ApplicantInfo(driver);
+                            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                            applicantInfo.ClickInfoALink();
                             driver.switchTo().frame("ifrmApplicantInfo");
+                            break;
 
+                        case "ApplicationInfo Save":
+
+                            applicantInfo.setClickSave();
+                            break;
 
                     }
 
@@ -239,15 +253,38 @@ break;
 
                             switch (objectName) {
 
-                                case "Case Type":
+                                case " Status Option":
+                                    applicantInfo.setselectStatus(value);
                             }
 
                 case "SETTEXT":
 
                     switch (objectName) {
 
-                        case "Case Type":
+
+                        case "Name":
+                            applicantInfo.setName(value);
+                            break;
+                        case "Mobile No":
+                            applicantInfo.setMobileNo(value);
+                            break;
+
+                        case "PerMentAddress":
+                            applicantInfo.setPerMentAddress(value);
+                            break;
+                        case "CorrespondanceAddress":
+                            applicantInfo.setCorrespondanceAddress(value);
+                            break;
+
+                        case "PinNo":
+                            applicantInfo.setPinNo(value);
+                            break;
+                        case "Email":
+                            applicantInfo.setEmail(value);
+                            break;
                     }
+
+
                         default:
                             break;
                     }

@@ -1,9 +1,11 @@
 package Pages.Applicant.DraftApplication;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by akshay.pokley on 6/13/2017.
@@ -12,11 +14,11 @@ public class ApplicantInfo {
 
     WebDriver driver;
 
-    @FindBy(xpath = ".//*[@id='liapplication']/a")
+    @FindBy(id= "divapplication")
     WebElement InfoText;
 
 
-    @FindBy(xpath = ".//*[@id='liapplication']/a")
+    @FindBy(xpath = "//div[@id='divTabs']/div/ul/li[2]/a")
     WebElement InfoALink;
 
     @FindBy(xpath = ".//*[@id='ApplicantControl_txtOwnerName']")
@@ -47,21 +49,24 @@ public class ApplicantInfo {
     public ApplicantInfo (WebDriver driver)
     { this.driver=driver;
         PageFactory.initElements(driver,this);
-        if(!InfoText.isDisplayed())
-            throw  new IllegalStateException("This is not login page");
+      /*  if(!InfoText.isDisplayed())
+            throw  new IllegalStateException("This is not login page");*/
     }
 
     public WebElement getInfoText()
     {
         return InfoText;
     }
-    public void getName(String name)
+
+    public void setName(String name)
     {
         Name.sendKeys(name);
     }
-    public void getInfoALink()
+    public void ClickInfoALink()
     {
-        InfoALink.click();
+        //InfoALink.click();
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", InfoALink);
     }
     public void setMobileNo(String mobileNo)
     {
@@ -90,5 +95,10 @@ public class ApplicantInfo {
     public  void setClickSave()
     {
         ClickSave.click();
+    }
+    public void setselectStatus(String selectStatus1)
+    {
+        Select combo=new Select(selectStatus);
+        combo.selectByVisibleText(selectStatus1);
     }
 }
