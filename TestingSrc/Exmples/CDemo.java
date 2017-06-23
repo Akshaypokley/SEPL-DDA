@@ -22,14 +22,12 @@ public class CDemo {
     public static String f() {
         driver=openBrowser("chrome");
         driver.get("http://www.gogamers.com/#!blank/gs4id");
-        String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
-        driver.findElement(By.xpath(".//*[@id='field1']")).sendKeys("$");
-
-    String str = driver.findElement(By.xpath(".//*[@id='field1']")).getText();
-        if (str.matches("^[\\s\\S]+")) {
+        driver.findElement(By.xpath(".//*[@id='field1']")).sendKeys("lopi");
+    final String str = driver.findElement(By.xpath(".//*[@id='field1']")).getText();
+    final Pattern pattern = Pattern.compile("^[A-Za-z, ]++$");
+    if (!pattern.matcher(str).matches()) {
             System.out.println("Invalid character in Name field");
         } else {
             System.out.println("valid");
