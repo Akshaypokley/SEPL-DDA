@@ -47,7 +47,7 @@ public class DateFunction {
             driver.findElement(By.xpath("html/body/div[2]/div[1]/table/thead/tr[1]/th[@class="+ (isFuture ? "'next'" : "'prev'") + "]")).click();
         }
         // Click on Day of Month from table
-        driver.findElement(By.xpath("html/body/div[2]/div[1]/table/tbody/tr[3]/td[text()='" + (new DateTime(setDate).getDayOfMonth()) + "']")).click();
+        driver.findElement(By.xpath("html/body/div[2]/div[1]/table/tbody/tr[4]/td[text()='" + (new DateTime(setDate).getDayOfMonth()) + "']")).click();
 
 
     }

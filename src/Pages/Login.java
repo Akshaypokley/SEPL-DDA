@@ -77,4 +77,7 @@ public class Login {
     {
         return LoginF;
     }
-}
+    public  WebElement getPassF() {
+        return passF;
+    }
+    }

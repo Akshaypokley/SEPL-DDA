@@ -197,10 +197,22 @@ public class LTPRegistration {
         FirstNm.sendKeys(Fname);
     }
 
+    public WebElement getFirstNm()
+    {
+      return   FirstNm;
+    }
     public void setLastNM(String Lname) {
         LastNM.sendKeys(Lname);
     }
 
+    public WebElement getMiddleNM()
+    {
+        return   MiddleNM;
+    }
+    public WebElement getLastNM()
+    {
+        return   LastNM;
+    }
     public void setMiddleNM(String Mname)
     {
         MiddleNM.sendKeys(Mname);
@@ -227,7 +239,34 @@ public class LTPRegistration {
     {
         PinCode.sendKeys(Pincod);
     }
+    public WebElement getPinCode()
+    {
+        return PinCode;
+    }
 
+    public WebElement getMoileNm()
+    {
+        return MoileNm;
+    }
+    public WebElement getEmail()
+    {
+        return Email;
+    }
+
+    public WebElement getLoginNm()
+    {
+        return LoginNm;
+    }
+
+    public WebElement getPassword()
+    {
+        return Password;
+    }
+
+    public WebElement getRePass()
+    {
+        return RePass;
+    }
     public void setMoileNm(String MoboNo)
     {
         MoileNm.sendKeys(MoboNo);
