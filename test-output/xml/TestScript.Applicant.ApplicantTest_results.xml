@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression"
+           tests="12"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="281.028">
+  <properties />
+  
+  
+            <testcase name="E" time="4.216" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="2.214" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="4.654" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="165.678" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="6.652" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="0.003" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="20.891" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="47.159" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="5.240" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="2.511" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="20.313" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="1.497" classname="TestScript.Applicant.ApplicantTest" />
+      
+</testsuite>

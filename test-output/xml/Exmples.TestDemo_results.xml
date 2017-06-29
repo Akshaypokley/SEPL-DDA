@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression"
+           tests="19"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="118.852">
+  <properties />
+  
+  
+            <testcase name="E" time="1.423" classname="Exmples.TestDemo" />
+                <testcase name="E" time="15.373" classname="Exmples.TestDemo" />
+                <testcase name="E" time="9.912" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.144" classname="Exmples.TestDemo" />
+                <testcase name="E" time="2.299" classname="Exmples.TestDemo" />
+                <testcase name="E" time="2.502" classname="Exmples.TestDemo" />
+                <testcase name="E" time="12.638" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.990" classname="Exmples.TestDemo" />
+                <testcase name="E" time="2.584" classname="Exmples.TestDemo" />
+                <testcase name="E" time="3.080" classname="Exmples.TestDemo" />
+                <testcase name="E" time="2.239" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.203" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.122" classname="Exmples.TestDemo" />
+                <testcase name="E" time="14.176" classname="Exmples.TestDemo" />
+                <testcase name="E" time="2.008" classname="Exmples.TestDemo" />
+                <testcase name="E" time="17.542" classname="Exmples.TestDemo" />
+                <testcase name="E" time="25.741" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.545" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.331" classname="Exmples.TestDemo" />
+      
+</testsuite>
