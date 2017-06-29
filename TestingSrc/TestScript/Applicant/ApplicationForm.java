@@ -280,7 +280,7 @@ public class ApplicationForm {
         Object[][] object = null;
         FileInputStream fis = new FileInputStream("Excelsheet/TestCaseDemo.xls");
         HSSFWorkbook wb = new HSSFWorkbook(fis);
-        HSSFSheet sh = wb.getSheet("Add Applicant");
+        HSSFSheet sh = wb.getSheet("Add Proposal");
         //  HSSFRow rows = sh.getRow(1);
 //Read keyword sheet
 //Find number of rows in Expl.excel file

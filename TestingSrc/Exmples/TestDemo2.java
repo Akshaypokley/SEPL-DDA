@@ -194,9 +194,8 @@ public class TestDemo2{
 
                         case "DUAC No":
                             newApplication.ClickDUACNO();
-                            break;
-                    }
 
+                    }break;
                 case "SETTEXT":
 
                     switch (objectName) {
@@ -233,9 +232,9 @@ public class TestDemo2{
                             break;
                         case "Situated at":
                             newApplication.setSituated(value);
-                            break;
-                    }
 
+                    }
+break;
                 case "SELECT":
 
                     switch (objectName) {
@@ -245,9 +244,9 @@ public class TestDemo2{
                             break;
                         case "Case Location":
                             newApplication.setLocation(value);
-                            break;
-                    }
 
+                    }
+break;
                 default:
                     break;
             }
@@ -280,7 +279,7 @@ public class TestDemo2{
         Object[][] object = null;
         FileInputStream fis = new FileInputStream("Excelsheet/TestCaseDemo.xls");
         HSSFWorkbook wb = new HSSFWorkbook(fis);
-        HSSFSheet sh = wb.getSheet("Add Applicant");
+        HSSFSheet sh = wb.getSheet("Add Proposal");
         //  HSSFRow rows = sh.getRow(1);
 //Read keyword sheet
 //Find number of rows in Expl.excel file

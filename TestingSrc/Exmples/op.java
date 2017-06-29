@@ -11,7 +11,7 @@ public class op {
     {
     final String input = "ds1fsdf";
     final String gh = "d443";
-        final String Email = "Ag.com";
+        final String Email = "A@g.com";
     final Pattern pattern = Pattern.compile("^[A-Za-z,0-9 ]++$");
 
     final  Pattern pattern2 = Pattern.compile("^[0-9]++$");

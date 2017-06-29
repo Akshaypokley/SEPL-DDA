@@ -19,9 +19,11 @@ public class NewApplication {
     @FindBy(id= "cboCaseType")
     WebElement CaseType;
 
+    @FindBy(xpath = ".//*[@id='cboApplicationType']")
+    WebElement AppliType;
+
     @FindBy(xpath = ".//*[@id='cboVillage']")
     WebElement Location;
-
     @FindBy(xpath = ".//*[@id='rbtnNocReqd_1']")
     WebElement DUACNO;
 
@@ -61,6 +63,11 @@ public class NewApplication {
     @FindBy(xpath = ".//*[@id='SiteAddress_txtAddress11']")
     WebElement Situated;
 
+    @FindBy(xpath = ".//*[@id='rbtnNocFromLabour_1']")
+    WebElement NOCNO;
+
+    @FindBy(xpath = ".//*[@id='rbtnNocFromLabour_0']")
+    WebElement NOCYES;
 
     @FindBy(xpath = ".//*[@id='btnSave']")
     WebElement Save;
@@ -73,6 +80,15 @@ public class NewApplication {
             throw new IllegalStateException("This Not Architect Login");*/
 
     }
+    public void ClickNOCNO()
+    {
+        NOCNO.click();
+    }
+
+    public void ClickNOCYES()
+    {
+        NOCYES.click();
+    }
 
     public WebElement getLogo()
     {
@@ -84,7 +100,11 @@ public class NewApplication {
         Select combo1=new Select(CaseType);
         combo1.selectByVisibleText(caseType);
     }
-
+    public void setAppliType(String appliType)
+    {
+        Select combo1=new Select(AppliType);
+        combo1.selectByVisibleText(appliType);
+    }
     public void setLocation(String location)
     {
         Select combo=new Select(Location);
@@ -99,6 +119,11 @@ public class NewApplication {
     public void setBuildingNo(String buildingNo)
     {
         BuildingNo.sendKeys(buildingNo);
+    }
+
+    public WebElement getBuildingNo()
+    {
+        return BuildingNo;
     }
     public void setPlotNo(String plotNo)
     {
