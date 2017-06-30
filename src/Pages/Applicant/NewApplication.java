@@ -95,6 +95,10 @@ public class NewApplication {
         return Logo;
     }
 
+    public WebElement getPlotNo()
+    {
+        return PlotNo;
+    }
     public void setCaseType(String caseType)
     {
         Select combo1=new Select(CaseType);

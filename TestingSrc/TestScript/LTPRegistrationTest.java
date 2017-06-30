@@ -84,7 +84,7 @@ public class LTPRegistrationTest {
 /************************************************************************************************/
         WritableFont cellFont2 = new WritableFont(WritableFont.COURIER, 10);
         cellFont2.setColour(BLACK);
-        cellFont2.setBoldStyle(WritableFont.BOLD);
+        //cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
         cellFormat1.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat1.setWrap(true);
@@ -92,14 +92,14 @@ public class LTPRegistrationTest {
 /************************************************************************************************/
         WritableFont cellFont3 = new WritableFont(WritableFont.COURIER, 10);
         cellFont3.setColour(RED);
-        cellFont3.setBoldStyle(WritableFont.BOLD);
+       // cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
         WritableFont cellFont4 = new WritableFont(WritableFont.COURIER, 10);
         cellFont4.setColour(GREEN);
-        cellFont4.setBoldStyle(WritableFont.BOLD);
+       // cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
         cellFormat4.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat4.setWrap(true);
@@ -203,6 +203,30 @@ public class LTPRegistrationTest {
 
                         case "Submit":
                             ltpRegistration.ClickSubmit();
+                            Actual2 = "Alert message should be display.";
+                            // if (driver.findElement(By.xpath("./*//*[@id='lblULBName']")).getText().equals("Delhi Development Authority")) {
+                            try {
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    System.out.println("alert was not present");
+                                   // if (driver.findElement(By.xpath(".*//*//**//*[@id='lblULBName']")).getText().equals("Delhi Development Authority"))
+                                        Result = "pass";
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+                                    Actual = driver.switchTo().alert().getText();
+                                    if (Actual.equals(Expected) || Actual2.equals(Expected)) {
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                    }
+                                    System.out.println(Actual);
+                                    //    Thread.sleep(50);
+                                    alert.accept();
+
+                                }
+
+                            } catch (Throwable e) {
+                            }
+
                             break;
 
                         case "AttachID":
@@ -285,7 +309,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert Window not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -295,7 +319,7 @@ public class LTPRegistrationTest {
                                         if (!String.matcher(fieldValue).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert Window not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -312,7 +336,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert Window not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -370,7 +394,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert was not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -380,7 +404,7 @@ public class LTPRegistrationTest {
                                         if (!String.matcher(fieldValue1).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -397,7 +421,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -457,7 +481,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert was not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -467,7 +491,7 @@ public class LTPRegistrationTest {
                                         if (!String.matcher(fieldValue2).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -484,7 +508,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -508,7 +532,13 @@ public class LTPRegistrationTest {
                             ltpRegistration.setQlification(value);
                             Result = "pass";
                             break;
-                        case " Total Experience":
+                        case "Total Experience":
+                            driver.findElement(By.id("txtExperience")).sendKeys(value);
+                            Result = "pass";
+                            break;
+                        case "Short Profile":
+                            driver.findElement(By.id("txtShortProfile")).sendKeys(value);
+                            Result = "pass";
                             break;
                         case "Firm Name":
                             ltpRegistration.setFirmName(value);
@@ -543,7 +573,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert was not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -553,7 +583,7 @@ public class LTPRegistrationTest {
                                         if (!Num.matcher(fieldValue3).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -570,7 +600,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -622,7 +652,7 @@ public class LTPRegistrationTest {
                                         if (!Num.matcher(fieldValue4).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -639,7 +669,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -685,7 +715,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert was not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -695,7 +725,7 @@ public class LTPRegistrationTest {
                                         if (!Emailval.matcher(fieldValue5).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                     System.out.println(Actual);
                                                 } else {
@@ -713,7 +743,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -774,7 +804,7 @@ public class LTPRegistrationTest {
                                         }
 
                                     } catch (Throwable e) {
-                                        Actual = "Alert was not open so,user not get Actual result";
+                                        Actual = "Alert message not display so,user not get Actual result.";
                                         Result = "Fail";
                                     }
 
@@ -784,7 +814,7 @@ public class LTPRegistrationTest {
                                         if (!Alphnu.matcher(fieldValue6).matches()) {
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                    Actual = "Alert was not open so,user not get Actual result";
+                                                    Actual = "Alert message not display so,user not get Actual result.";
                                                     Result = "Fail";
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
@@ -801,7 +831,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
                                         } else {
@@ -860,7 +890,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
 
@@ -870,7 +900,7 @@ public class LTPRegistrationTest {
                                                 if (!Alphnu.matcher(fieldValue7).matches()) {
                                                     try {
                                                         if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                            Actual = "Alert was not open so,user not get Actual result";
+                                                            Actual = "Alert message not display so,user not get Actual result.";
                                                             Result = "Fail";
                                                         } else {
                                                             Alert alert = driver.switchTo().alert();
@@ -887,7 +917,7 @@ public class LTPRegistrationTest {
                                                         }
 
                                                     } catch (Throwable e) {
-                                                        Actual = "Alert was not open so,user not get Actual result";
+                                                        Actual = "Alert message not display so,user not get Actual result.";
                                                         Result = "Fail";
                                                     }
                                                 } else {
@@ -946,7 +976,7 @@ public class LTPRegistrationTest {
                                                 }
 
                                             } catch (Throwable e) {
-                                                Actual = "Alert was not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             }
 
@@ -956,7 +986,7 @@ public class LTPRegistrationTest {
                                                 if (!Alphnu.matcher(fieldValue8).matches()) {
                                                     try {
                                                         if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                            Actual = "Alert was not open so,user not get Actual result";
+                                                            Actual = "Alert message not display so,user not get Actual result.";
                                                             Result = "Fail";
                                                         } else {
                                                             Alert alert = driver.switchTo().alert();
@@ -973,7 +1003,7 @@ public class LTPRegistrationTest {
                                                         }
 
                                                     } catch (Throwable e) {
-                                                        Actual = "Alert was not open so,user not get Actual result";
+                                                        Actual = "Alert message not display so,user not get Actual result.";
                                                         Result = "Fail";
                                                     }
                                                 } else {
@@ -1039,7 +1069,7 @@ public class LTPRegistrationTest {
                     targetSheet.addCell(l6);
                 } else {
 
-                    Label l5 = new Label(5, LastRow, "Due To-->" + "" + Actual, cellFormat1);
+                    Label l5 = new Label(5, LastRow, Actual, cellFormat1);
                     targetSheet.addCell(l5);
                     Label l6 = new Label(6, LastRow, "FAIL", cellFormat3);
                     targetSheet.addCell(l6);

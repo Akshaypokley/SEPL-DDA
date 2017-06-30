@@ -4,28 +4,28 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="118.852">
+           time="53.206">
   <properties />
   
   
-            <testcase name="E" time="1.423" classname="Exmples.TestDemo" />
-                <testcase name="E" time="15.373" classname="Exmples.TestDemo" />
-                <testcase name="E" time="9.912" classname="Exmples.TestDemo" />
-                <testcase name="E" time="0.144" classname="Exmples.TestDemo" />
-                <testcase name="E" time="2.299" classname="Exmples.TestDemo" />
-                <testcase name="E" time="2.502" classname="Exmples.TestDemo" />
-                <testcase name="E" time="12.638" classname="Exmples.TestDemo" />
-                <testcase name="E" time="1.990" classname="Exmples.TestDemo" />
-                <testcase name="E" time="2.584" classname="Exmples.TestDemo" />
-                <testcase name="E" time="3.080" classname="Exmples.TestDemo" />
-                <testcase name="E" time="2.239" classname="Exmples.TestDemo" />
-                <testcase name="E" time="1.203" classname="Exmples.TestDemo" />
-                <testcase name="E" time="1.122" classname="Exmples.TestDemo" />
-                <testcase name="E" time="14.176" classname="Exmples.TestDemo" />
-                <testcase name="E" time="2.008" classname="Exmples.TestDemo" />
-                <testcase name="E" time="17.542" classname="Exmples.TestDemo" />
-                <testcase name="E" time="25.741" classname="Exmples.TestDemo" />
-                <testcase name="E" time="1.545" classname="Exmples.TestDemo" />
-                <testcase name="E" time="1.331" classname="Exmples.TestDemo" />
+            <testcase name="E" time="0.644" classname="Exmples.TestDemo" />
+                <testcase name="E" time="6.110" classname="Exmples.TestDemo" />
+                <testcase name="E" time="6.121" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.056" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.443" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.535" classname="Exmples.TestDemo" />
+                <testcase name="E" time="6.131" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.231" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.478" classname="Exmples.TestDemo" />
+                <testcase name="E" time="1.617" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.634" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.460" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.429" classname="Exmples.TestDemo" />
+                <testcase name="E" time="6.276" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.865" classname="Exmples.TestDemo" />
+                <testcase name="E" time="12.315" classname="Exmples.TestDemo" />
+                <testcase name="E" time="7.670" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.441" classname="Exmples.TestDemo" />
+                <testcase name="E" time="0.750" classname="Exmples.TestDemo" />
       
 </testsuite>

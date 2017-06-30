@@ -18,7 +18,7 @@ public class ApplicantInfo {
     WebElement InfoText;
 
 
-    @FindBy(xpath = "//div[@id='divTabs']/div/ul/li[2]/a")
+    @FindBy(xpath = "//*[@id='frmDetails']/div[4]/div/ul/li[2]")
     WebElement InfoALink;
 
     @FindBy(xpath = ".//*[@id='ApplicantControl_txtOwnerName']")
@@ -64,9 +64,8 @@ public class ApplicantInfo {
     }
     public void ClickInfoALink()
     {
-        //InfoALink.click();
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].click();", InfoALink);
+        InfoALink.click();
+
     }
     public void setMobileNo(String mobileNo)
     {

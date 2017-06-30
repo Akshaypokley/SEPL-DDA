@@ -78,7 +78,7 @@ public class ApplicantTest {
 /************************************************************************************************/
         WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 12);
         cellFont2.setColour(BLACK);
-        cellFont2.setBoldStyle(WritableFont.BOLD);
+        //cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
         cellFormat1.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat1.setWrap(true);
@@ -86,14 +86,14 @@ public class ApplicantTest {
 /************************************************************************************************/
         WritableFont cellFont3 = new WritableFont(WritableFont.TIMES, 12);
         cellFont3.setColour(RED);
-        cellFont3.setBoldStyle(WritableFont.BOLD);
+       // cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
         WritableFont cellFont4 = new WritableFont(WritableFont.TIMES, 12);
         cellFont4.setColour(GREEN);
-        cellFont4.setBoldStyle(WritableFont.BOLD);
+      //  cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
         cellFormat4.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat4.setWrap(true);
@@ -220,7 +220,7 @@ public class ApplicantTest {
                         case "Submit":
                 newApplication.setSave();
                             //login.ClickLoginBtn();
-                            Actual2 = "Alert window should be open";
+                            Actual2 = "Alert message should be display";
                             // if (driver.findElement(By.xpath("./*//*[@id='lblULBName']")).getText().equals("Delhi Development Authority")) {
                             try {
                                 if ((ExpectedConditions.alertIsPresent()) == null) {
@@ -276,7 +276,7 @@ public class ApplicantTest {
 
                                 } catch (Throwable g) {
                                     Result="fail";
-                                    Actual="Alert Window not open so,user not get Actual result";
+                                    Actual="Alert message not display so,user not get Actual result.";
                                 }
                             }
                             break;
@@ -306,7 +306,7 @@ public class ApplicantTest {
 
                     } catch (Throwable ye) {
                         Result="fail";
-                        Actual="Alert Window not open so,user not get Actual result";
+                        Actual="Alert message not display so,user not get Actual result.";
                     }
                 }
                             break;
@@ -354,7 +354,7 @@ public class ApplicantTest {
                             break;
                         case "Plot No":
                             newApplication.setPlotNo(value);
-                            final String fieldValue8 = newApplication.getBuildingNo().getAttribute("value");
+                            final String fieldValue8 = newApplication.getPlotNo().getAttribute("value");
                             System.out.println(fieldValue8);
                             System.out.println(value);
                             if (fieldValue8.isEmpty()) {
@@ -376,7 +376,7 @@ public class ApplicantTest {
                                     }
 
                                 } catch (Throwable e) {
-                                    Actual = "Alert Window not open so,user not get Actual result";
+                                    Actual = "Alert message not display so,user not get Actual result.";
                                     Result = "Fail";
                                 }
 
@@ -385,7 +385,7 @@ public class ApplicantTest {
                                     if (!pattern.matcher(fieldValue8).matches()) {
                                         try {
                                             if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                Actual = "Alert Window not open so,user not get Actual result";
+                                                Actual = "Alert message not display so,user not get Actual result.";
                                                 Result = "Fail";
                                             } else {
                                                 Alert alert = driver.switchTo().alert();
@@ -402,7 +402,7 @@ public class ApplicantTest {
                                             }
 
                                         } catch (Throwable e) {
-                                            Actual = "Alert was not open so,user not get Actual result";
+                                            Actual = "Alert message not display so,user not get Actual result.";
                                             Result = "Fail";
                                         }
                                     } else {
@@ -463,7 +463,7 @@ public class ApplicantTest {
                     targetSheet.addCell(l6);
                 } else {
 
-                    Label l5 = new Label(5, LastRow, "Due To-->" + "" + Actual, cellFormat1);
+                    Label l5 = new Label(5, LastRow,  Actual, cellFormat1);
                     targetSheet.addCell(l5);
                     Label l6 = new Label(6, LastRow, "FAIL", cellFormat3);
                     targetSheet.addCell(l6);

@@ -13,7 +13,7 @@ public class LoginFunction {
     {
 
         Login login=new Login(driver);
-        login.setLoginF("dar56246");
+        login.setLoginF("akshu123");
         login.setpassF("Akshay85");
         login.ClickLoginBtn();
 
