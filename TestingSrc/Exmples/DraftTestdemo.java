@@ -178,11 +178,7 @@ public class DraftTestdemo {
 
             driver = openBrowser("chrome");
             GetUrl("url");
-            LogFunction(driver);
-            Menu menu=new Menu(driver);
-            menu.ClickDraftlink();
-            driver.switchTo().frame("ifrmListing");
-            Thread.sleep(1000);//switch to iframe
+
 
             SetBord = j++;
             Label l7 = new Label(5, SetBord, "", cellFormat1);

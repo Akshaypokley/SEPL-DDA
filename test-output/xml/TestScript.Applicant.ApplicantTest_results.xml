@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="Regression"
-           tests="12"
+           tests="13"
            failures="0"
            errors="0"
            skipped="0"
-           time="201.780">
+           time="210.751">
   <properties />
   
   
-            <testcase name="E" time="1.904" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.002" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.682" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="20.539" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.002" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.408" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="0.000" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="21.428" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="53.832" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="96.226" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.277" classname="TestScript.Applicant.ApplicantTest" />
-                <testcase name="E" time="1.480" classname="TestScript.Applicant.ApplicantTest" />
+            <testcase name="E" time="1.228" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="0.001" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="3.501" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="5.329" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="21.367" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="1.165" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="0.001" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="23.754" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="1.414" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="5.783" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="91.526" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="2.735" classname="TestScript.Applicant.ApplicantTest" />
+                <testcase name="E" time="52.947" classname="TestScript.Applicant.ApplicantTest" />
       
 </testsuite>

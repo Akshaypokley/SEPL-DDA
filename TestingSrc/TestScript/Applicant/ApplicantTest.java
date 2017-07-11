@@ -41,7 +41,7 @@ public class ApplicantTest {
     public static WritableCellFormat cellFormat3;
     public static WritableCellFormat cellFormat4;
     public WritableCellFormat cellFormat2;
-    public static WritableCellFormat cellFormat5;
+    public static WritableCellFormat cellFormat5;    public static WritableCellFormat cellFormat6;
     public  String TestCase;
     public WritableWorkbook writableTempSource;
     public WritableWorkbook copyDocument;
@@ -73,10 +73,10 @@ public class ApplicantTest {
         sourceSheet = writableTempSource.getSheet(1);
         targetSheet = copyDocument.createSheet("sheet 1", 2);
 
-        WritableFont cellFont = new WritableFont(WritableFont.TIMES, 11);
+        WritableFont cellFont = new WritableFont(WritableFont.COURIER, 11);
         cellFont.setBoldStyle(WritableFont.BOLD);
 /************************************************************************************************/
-        WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont2 = new WritableFont(WritableFont.COURIER, 12);
         cellFont2.setColour(BLACK);
         //cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
@@ -84,14 +84,14 @@ public class ApplicantTest {
         cellFormat1.setWrap(true);
 /*******************************************************************************************************/
 /************************************************************************************************/
-        WritableFont cellFont3 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont3 = new WritableFont(WritableFont.COURIER, 12);
         cellFont3.setColour(RED);
        // cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
-        WritableFont cellFont4 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont4 = new WritableFont(WritableFont.COURIER, 12);
         cellFont4.setColour(GREEN);
       //  cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
@@ -100,20 +100,24 @@ public class ApplicantTest {
 
 
         cellFormat = new WritableCellFormat(cellFont);
-        cellFormat.setBackground(SKY_BLUE);
+        cellFormat.setBackground(LIGHT_BLUE);
         cellFormat.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat.setWrap(true);
         cellFormat2 = new WritableCellFormat(cellFont);
         cellFormat2.setBackground(RED);
         //cellFormat.setAlignment(jxl.format.Alignment.getAlignment(20));
-        WritableFont cellFont5 = new WritableFont(WritableFont.TIMES, 18);
+        WritableFont cellFont5 = new WritableFont(WritableFont.COURIER, 18);
         cellFont5.setColour(BLACK);
         cellFont5.setBoldStyle(WritableFont.BOLD);
         cellFormat5 = new WritableCellFormat(cellFont5);
         cellFormat5.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
-        cellFormat5.setBackground(SKY_BLUE);
+        cellFormat5.setBackground(LIGHT_BLUE);
         cellFormat5.setAlignment(Alignment.CENTRE);
 
+        cellFormat6 = new WritableCellFormat(cellFont2);
+        cellFormat6.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
+        cellFormat6.setWrap(true);
+        cellFormat6.setBackground(LIGHT_TURQUOISE);
         //  sheet.addCell(new Label(col, 1, "CCCCC", cellFormat));
 
         for (int row = 0; row < sourceSheet.getRows(); row++) {
@@ -131,15 +135,18 @@ public class ApplicantTest {
 
                 Label l3=new Label(6,1,"Result",cellFormat);
                 //Label l4=new Label(4,row,"",cellFormat);
-                int widthInChars = 36;
+                int widthInChars = 36;   int widthInChars1 = 16;
                 int widthInChars2 = 20;
                 targetSheet.setColumnView(4, widthInChars);
                 targetSheet.setColumnView(5, widthInChars);
+                targetSheet.setColumnView(2, widthInChars1);
+                targetSheet.setColumnView(3, widthInChars1);
+                targetSheet.setColumnView(1, widthInChars1);
 /*-----------------------------------------------------------------------------------------------------------------------*/
                 targetSheet.setColumnView(0, widthInChars2);
                 targetSheet.mergeCells(0, 0, 6, 0);
                 Label lable = new Label (0, 0,
-                        "Add Proposal window test  report",cellFormat5);
+                        "Add Proposal screen test  report",cellFormat5);
                 targetSheet.addCell(lable);
                 targetSheet.addCell(l2);
                 targetSheet.addCell(l3);
@@ -180,9 +187,9 @@ public class ApplicantTest {
             driver.switchTo().frame("IframeAddProposal");
             Thread.sleep(50);//switch to iframe
             SetBord = j++;
-            Label l7 = new Label(5, SetBord, "", cellFormat1);
+            Label l7 = new Label(5, SetBord, "", cellFormat6);
             targetSheet.addCell(l7);
-            Label l8 = new Label(6, SetBord, "", cellFormat1);
+            Label l8 = new Label(6, SetBord, "", cellFormat6);
             targetSheet.addCell(l8);
         } else {
             SetBord = j++;
@@ -276,7 +283,7 @@ public class ApplicantTest {
 
                                 } catch (Throwable g) {
                                     Result="fail";
-                                    Actual="Alert message not display so,user not get Actual result.";
+                                    Actual="Alert message not display.";
                                 }
                             }
                             break;
@@ -306,7 +313,7 @@ public class ApplicantTest {
 
                     } catch (Throwable ye) {
                         Result="fail";
-                        Actual="Alert message not display so,user not get Actual result.";
+                        Actual="Alert message not display.";
                     }
                 }
                             break;
@@ -376,7 +383,7 @@ public class ApplicantTest {
                                     }
 
                                 } catch (Throwable e) {
-                                    Actual = "Alert message not display so,user not get Actual result.";
+                                    Actual = "Alert message not display.";
                                     Result = "Fail";
                                 }
 
@@ -385,7 +392,7 @@ public class ApplicantTest {
                                     if (!pattern.matcher(fieldValue8).matches()) {
                                         try {
                                             if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                Actual = "Alert message not display so,user not get Actual result.";
+                                                Actual = "Alert message not display.";
                                                 Result = "Fail";
                                             } else {
                                                 Alert alert = driver.switchTo().alert();
@@ -402,7 +409,7 @@ public class ApplicantTest {
                                             }
 
                                         } catch (Throwable e) {
-                                            Actual = "Alert message not display so,user not get Actual result.";
+                                            Actual = "Alert message not display.";
                                             Result = "Fail";
                                         }
                                     } else {

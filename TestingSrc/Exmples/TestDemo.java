@@ -8,6 +8,7 @@ import jxl.write.*;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.awt.peer.LightweightPeer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,6 +38,7 @@ public class TestDemo {
     public static WritableCellFormat cellFormat1;
     public static WritableCellFormat cellFormat3;
     public static WritableCellFormat cellFormat4;
+    public static WritableCellFormat cellFormat6;
     public WritableCellFormat cellFormat2;
     public static WritableCellFormat cellFormat5;
     public  String TestCase;
@@ -56,6 +59,7 @@ public class TestDemo {
     static int LastRow;
     static int SetBord;
     static  String Value;
+
     static String AlrMESS="Alert was not open ";
 
     static final java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
@@ -68,25 +72,31 @@ public class TestDemo {
         sourceSheet = writableTempSource.getSheet(0);
         targetSheet = copyDocument.createSheet("sheet 1", 0);
 
-        WritableFont cellFont = new WritableFont(WritableFont.TIMES, 11);
+        WritableFont cellFont = new WritableFont(WritableFont.COURIER, 11);
      cellFont.setBoldStyle(WritableFont.BOLD);
 /************************************************************************************************/
-        WritableFont cellFont2 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont2 = new WritableFont(WritableFont.COURIER, 12);
         cellFont2.setColour(BLACK);
        // cellFont2.setBoldStyle(WritableFont.BOLD);
         cellFormat1 = new WritableCellFormat(cellFont2);
         cellFormat1.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat1.setWrap(true);
+      //cellFormat1.setBackground(LIGHT_TURQUOISE);
+
+      cellFormat6 = new WritableCellFormat(cellFont2);
+      cellFormat6.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
+      cellFormat6.setWrap(true);
+      cellFormat6.setBackground(LIGHT_TURQUOISE);
 /*******************************************************************************************************/
 /************************************************************************************************/
-        WritableFont cellFont3 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont3 = new WritableFont(WritableFont.COURIER, 12);
         cellFont3.setColour(RED);
       //  cellFont3.setBoldStyle(WritableFont.BOLD);
         cellFormat3 = new WritableCellFormat(cellFont3);
         cellFormat3.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat3.setWrap(true);
 
-        WritableFont cellFont4 = new WritableFont(WritableFont.TIMES, 12);
+        WritableFont cellFont4 = new WritableFont(WritableFont.COURIER, 12);
         cellFont4.setColour(GREEN);
        // cellFont4.setBoldStyle(WritableFont.BOLD);
         cellFormat4 = new WritableCellFormat(cellFont4);
@@ -95,18 +105,18 @@ public class TestDemo {
 
 
         cellFormat = new WritableCellFormat(cellFont);
-        cellFormat.setBackground(SKY_BLUE);
+        cellFormat.setBackground(LIGHT_BLUE);
         cellFormat.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
         cellFormat.setWrap(true);
         cellFormat2 = new WritableCellFormat(cellFont);
         cellFormat2.setBackground(RED);
         //cellFormat.setAlignment(jxl.format.Alignment.getAlignment(20));
-        WritableFont cellFont5 = new WritableFont(WritableFont.TIMES, 18);
+        WritableFont cellFont5 = new WritableFont(WritableFont.COURIER, 18);
         cellFont5.setColour(BLACK);
         cellFont5.setBoldStyle(WritableFont.BOLD);
         cellFormat5 = new WritableCellFormat(cellFont5);
         cellFormat5.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
-        cellFormat5.setBackground(SKY_BLUE);
+        cellFormat5.setBackground(LIGHT_BLUE);
         cellFormat5.setAlignment(Alignment.CENTRE);
 
         //  sheet.addCell(new Label(col, 1, "CCCCC", cellFormat));
@@ -122,19 +132,23 @@ public class TestDemo {
                 targetSheet.addCell(newCell);
 
 
-                Label l2=new Label(5,1,"Actual Message",cellFormat);
+                Label l2=new Label(5,1,"Actual ",cellFormat);
 
-                Label l3=new Label(6,1,"Result",cellFormat);
+                Label l3=new Label(6,1,"Status",cellFormat);
                 //Label l4=new Label(4,row,"",cellFormat);
                 int widthInChars = 36;
+                int widthInChars1 = 16;
                 int widthInChars2 = 20;
                 targetSheet.setColumnView(4, widthInChars);
                 targetSheet.setColumnView(5, widthInChars);
+                targetSheet.setColumnView(2, widthInChars1);
+                targetSheet.setColumnView(3, widthInChars1);
+                targetSheet.setColumnView(1, widthInChars1);
 /*-----------------------------------------------------------------------------------------------------------------------*/
                 targetSheet.setColumnView(0, widthInChars2);
                 targetSheet.mergeCells(0, 0, 6, 0);
                 Label lable = new Label (0, 0,
-                        "Login window test  report",cellFormat5);
+                        "Login screen test  report",cellFormat5);
                 targetSheet.addCell(lable);
                 targetSheet.addCell(l2);
                 targetSheet.addCell(l3);
@@ -166,9 +180,9 @@ public class TestDemo {
             driver = openBrowser("chrome");
             GetUrl("url");
             SetBord = j++;
-            Label l7 = new Label(5, SetBord, "", cellFormat1);
+            Label l7 = new Label(5, SetBord, "", cellFormat6);
             targetSheet.addCell(l7);
-            Label l8 = new Label(6, SetBord, "", cellFormat1);
+            Label l8 = new Label(6, SetBord, "", cellFormat6);
             targetSheet.addCell(l8);
         } else {
             SetBord = j++;
@@ -235,7 +249,7 @@ public class TestDemo {
 
                                     }
 
-                                } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                } catch (Throwable e) {Actual = "Alert message not display.";
                                     Result = "Fail";
                                 }
 
@@ -245,7 +259,7 @@ public class TestDemo {
                                     if (!pattern.matcher(fieldValue).matches()) {
                                         try {
                                             if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                Actual = "Alert message not display so,user not get Actual result";
+                                                Actual = "Alert message not display .";
                                                 Result = "Fail";
                                             } else {
                                                 Alert alert = driver.switchTo().alert();
@@ -261,7 +275,7 @@ public class TestDemo {
 
                                             }
 
-                                        } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                        } catch (Throwable e) {Actual = "Alert message not display.";
                                             Result = "Fail";
                                         }
                                     } else {
@@ -272,7 +286,7 @@ public class TestDemo {
                                 } else {
                                     try {
                                         if ((ExpectedConditions.alertIsPresent()) == null) {
-                                            Actual = "Alert message not display so,user not get Actual result";
+                                            Actual = "Alert message not display .";
                                             Result = "Fail";
                                         } else {
                                             Alert alert = driver.switchTo().alert();
@@ -288,7 +302,7 @@ public class TestDemo {
 
                                         }
 
-                                    } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                    } catch (Throwable e) {Actual = "Alert message not display.";
                                         Result = "Fail";
                                     }
                                 }
@@ -315,7 +329,7 @@ public class TestDemo {
 
                                     }
 
-                                } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                } catch (Throwable e) {Actual = "Alert message not display.";
                                     Result = "Fail";
                                 }
 
@@ -325,7 +339,7 @@ public class TestDemo {
                                     if (!pattern.matcher(fieldValue2).matches()) {
                                         try {
                                             if ((ExpectedConditions.alertIsPresent()) == null) {
-                                                Actual = "Alert message not display so,user not get Actual result";
+                                                Actual = "Alert message not display.";
                                                 Result = "Fail";
                                             } else {
                                                 Alert alert = driver.switchTo().alert();
@@ -341,7 +355,7 @@ public class TestDemo {
 
                                             }
 
-                                        } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                        } catch (Throwable e) {Actual = "Alert message not display .";
                                             Result = "Fail";
                                         }
                                     } else {
@@ -352,7 +366,7 @@ public class TestDemo {
                                 } else {
                                     try {
                                         if ((ExpectedConditions.alertIsPresent()) == null) {
-                                            Actual = "Alert message not display so,user not get Actual result";
+                                            Actual = "Alert message not display .";
                                             Result = "Fail";
                                         } else {
                                             Alert alert = driver.switchTo().alert();
@@ -368,7 +382,7 @@ public class TestDemo {
 
                                         }
 
-                                    } catch (Throwable e) {Actual = "Alert message not display so,user not get Actual result";
+                                    } catch (Throwable e) {Actual = "Alert message not display.";
                                         Result = "Fail";
                                     }
                                 }
