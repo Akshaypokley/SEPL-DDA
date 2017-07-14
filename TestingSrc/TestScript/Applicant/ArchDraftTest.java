@@ -1,6 +1,7 @@
 package TestScript.Applicant;
 
 import Pages.Applicant.DraftApplication.ApplicantInfo;
+import Pages.Applicant.DraftApplication.AttachDrawing;
 import Pages.Applicant.DraftApplication.DUACForm;
 import Pages.Applicant.DraftApplication.NMADetails;
 import Pages.Applicant.NewApplication;
@@ -15,6 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
@@ -25,8 +27,12 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import static Utilites.AttachFunction.AttachFuntn;
+import static Utilites.BeforeWH.BeforeWH;
 import static Utilites.LoginFunction.LogFunction;
 import static Utilites.OpenBrowser.GetUrl;
 import static Utilites.OpenBrowser.openBrowser;
@@ -70,8 +76,9 @@ public class ArchDraftTest {
     static ApplicantInfo applicantInfo;
     static DUACForm duacForm;
     static NMADetails nmaDetails;
-
-
+ static    String FilePath = "E:\\Akshay85\\DDAProject\\DDA_addition CASE.dwg";
+    static    String FilePath2 = "E:\\Akshay85\\MIDC\\vb.pdf";
+    static AttachDrawing attachDrawing;
     static final java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
     @BeforeTest
     public  void ExcelWdata() throws IOException, BiffException, WriteException {
@@ -205,6 +212,8 @@ public class ArchDraftTest {
 
             switch (keyword.toUpperCase()) {
                 case "CLICK":
+                    String WinHandleBefore1 = driver.getWindowHandle();   String WinHandleBefore2 = driver.getWindowHandle();
+
                     switch (objectName) {
                         case "FileNo":
                             try {
@@ -225,9 +234,66 @@ public class ArchDraftTest {
                             duacForm =new DUACForm(driver);
                             duacForm.ClickDUACText();
                             driver.switchTo().frame("IframeDUACForm");
-
                             Result="pass";
                             break;
+                            /***************************NMA Script********************************/
+                        case "NMA details":
+                             nmaDetails=new NMADetails(driver);
+                            nmaDetails.ClickNMADetailsText();
+                            driver.switchTo().frame("IframeNMADetails");
+                            Result="pass";
+                            break;
+
+                        case "Signature Documents":
+                            driver.findElement(By.xpath(".//*[@id='Button3']")).click();
+                            BeforeWH(driver);
+                            driver.findElement(By.xpath(".//*[@id='btnAttached']")).click();
+                            BeforeWH(driver);
+                            Thread.sleep(6000);
+                            WebElement ss = driver.findElement(By.id("RadAsyncUpload1file0"));
+                            ss.click();
+                            Thread.sleep(6000);
+                            AttachFuntn(driver, FilePath2);
+                            Thread.sleep(700);
+                            break;
+
+                        case "Modern Constrution Images":
+
+                            break;
+
+                        case "Google Earth Images":
+
+                            break;
+                        /***************************NMA Script********************************/
+
+                            case "AlertOK":
+
+                            WebElement d  =      driver.findElement(By.xpath("//td[@class='rwWindowContent']/div/div/div[2]/a"));
+                            String f=  d.getText();
+                            d.click();
+                            System.out.println(f);
+                            break;
+                        case "Attach Drawing":
+                            attachDrawing=new AttachDrawing(driver);
+                            attachDrawing.ClickDrawingALink();
+
+                            driver.switchTo().frame("ifrmDrawings");
+
+                            attachDrawing.ClickSelectFile();
+                     BeforeWH(driver);
+                            Thread.sleep(6000);
+                           WebElement ss2 = driver.findElement(By.id("RadAsyncUpload1file0"));
+                            ss2.click();
+                            Thread.sleep(6000);
+                            AttachFuntn(driver, FilePath);
+                           Thread.sleep(700);
+
+
+                            driver.switchTo().parentFrame();
+                          Result="pass";
+
+                            break;
+
 
                         case "ApplicantInfo":
                             /*System.out.println("1");
@@ -242,20 +308,114 @@ public class ArchDraftTest {
                     break;
                 case "SELECT":
                     switch (objectName) {
-                        case "ZonalMasterPlan":
+                        case "MasterPlan":
+                            String h= duacForm.getSELCTMasterPlan().getText();
+                            System.out.println(h);
+                            if(h.equals(value))
+                                Result = "pass";
+                            else
+                                Result = "Fail";
+                            Actual=" Master Plan Not be avilable in dropdown";
+                            break;
+
+                            case "ZonalApprovalMasterPlan":
+                            try{
                             duacForm.setSELCTZonalMasterPlan(value);
                             Result="pass";
+                    }catch ( Throwable r)
+                {Result = "Fail";
+
+                    Actual="Zonal Approval Master Plan Not be avilable in dropdown";}
                     }
                     break;
 
                 case "SETTEXT":
                     switch (objectName) {
-                        case "Submit":
-
+                        /***************************NMA Script********************************/
+                        case "Monument Name":
+                           nmaDetails.setMonumentName(value);
                             break;
+
+                        case "District":
+                            nmaDetails.setDistrict(value);
+                            break;
+
+                        case "Taluka":
+                            nmaDetails.setTaluka(value);
+                            break;
+                        case "Distance from Protected boundery Wall":
+                            nmaDetails.setDistanceProtectedbouewall(value);
+                            break;
+                        case "Locality":
+                            nmaDetails.setLocalityt(value);
+                            System.out.println(value);
+                            break;
+
+                        case "Distance from Monument(Mtr.)":
+                            nmaDetails.setDistancMonumen(value);
+                            break;
+
+                        case "Maximum height of Existing Builindg":
+                            nmaDetails.setMaximumheightBuilindg(value);
+                            break;
+
+                        case "Monument in Limit":
+                            nmaDetails.setMonumentinLimitof(value);
+                            break;
+                        case "Status of Construction of Modern Building":
+                            nmaDetails.setStatusModernBuilding(value);
+                            break;
+
+                        case "pen Space or Parking area":
+                            nmaDetails.setOpenSpace(value);
+                            break;
+
+                        case "Road details":
+                            nmaDetails.setRoaddetails(value);
+                            break;
+
+                        case "Number Of Storeys":
+                            nmaDetails.setNumberOfStoreys(value);
+                            break;
+                        case "Basement Details":
+                            nmaDetails.setBasementDetails(value);
+                            break;
+
+                        case "Approximate Duration":
+                            nmaDetails.setApproximateDuration(value);
+                            break;
+
+                        case "Approximate Date":
+                            nmaDetails.setApproximateDate(value);
+                            break;
+
+                        case "Height In Metres Including Mumty Parapet Water Storage Tank":
+                            nmaDetails.setHeightMumty(value);
+                            break;
+
+                        case "HeightIn Metres Excluding Mumty Parapet Water Storage Tank":
+                            nmaDetails.setHeightInExcludingMumty(value);
+                            break;
+
+                        case "Remark":
+                            nmaDetails.setRemark(value);
+                            break;
+                        /*************************** END NMA Script********************************/
+
+                        case "Name of proposal":
+                            duacForm.setNameoftheproposal(value);Result = "pass";
+                            break;
+                        case "Landline No":
+                            duacForm.setLandLine(value);Result = "pass";
+                            break;
+                        case "Architect Landline No":
+                            duacForm.setArchiteLandLine(value);Result = "pass";
+
+
                     }
                     break;
                 default:
+                    System.out.println("default");
                     break;
             }
 

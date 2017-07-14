@@ -34,6 +34,11 @@ public class DUACForm {
     @FindBy(xpath = ".//*[@id='btnSave']")
     WebElement SaveDuacFormDetails;
 
+    @FindBy(id = "txtOwnerContactNo")
+    WebElement LandLine;
+
+    @FindBy(id = "txtArchitectlandlineNo")
+    WebElement ArchiteLandLine;
     public DUACForm(WebDriver driver)
     { this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -56,9 +61,25 @@ public class DUACForm {
         combo.selectByVisibleText(selctMasterPlan);
     }
 
+    public WebElement getSELCTMasterPlan()
+    {
+      return SELCTMasterPlan;
+    }
     public void setEmail(String email)
     {
         Email.sendKeys(email);
+
+    }
+
+    public void setLandLine(String landLine)
+    {
+        LandLine.sendKeys(landLine);
+
+    }
+
+    public void setArchiteLandLine(String architeLandLine)
+    {
+        ArchiteLandLine.sendKeys(architeLandLine);
 
     }
     public void  setAddress(String address)

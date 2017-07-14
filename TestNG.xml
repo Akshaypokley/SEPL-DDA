@@ -7,8 +7,9 @@
     </listeners>
     <test name="Regression" >
         <classes>
-            <class name="Exmples.TestDemo" />
+
             <class name="TestScript.LTPRegistrationTest" />
+            <class name="Exmples.TestDemo" />
             <class name="TestScript.Applicant.ApplicantTest" />
 
 
