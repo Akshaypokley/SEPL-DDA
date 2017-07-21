@@ -13,8 +13,8 @@ public class Documents {
 
     WebDriver driver;
 
-    @FindBy(xpath = ".//*[@id='liDrawing']")
-    WebElement DrawiText;
+    @FindBy(xpath = ".//*[@id='liDocument']")
+    WebElement DocumentText;
 
 
 
@@ -22,13 +22,18 @@ public class Documents {
     public Documents(WebDriver driver)
     { this.driver=driver;
         PageFactory.initElements(driver,this);
-        if(!DrawiText.isDisplayed())
+        if(!DocumentText.isDisplayed())
             throw  new IllegalStateException("This is not login page");
     }
 
     public WebElement getDrawiText()
     {
-        return DrawiText;
+        return DocumentText;
+    }
+
+    public void ClickDocumentText()
+    {
+        DocumentText.click();
     }
 
 

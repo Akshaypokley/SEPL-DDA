@@ -9,10 +9,12 @@
         <classes>
 
             <class name="TestScript.LTPRegistrationTest" />
-            <class name="Exmples.TestDemo" />
+      <class name="Exmples.TestDemo" />
             <class name="TestScript.Applicant.ApplicantTest" />
+            <class name="TestScript.Applicant.AttachmentTest" />
+        <!---    <class name="TestScript.Applicant.ArchDraftTest" />
 
-
+-->
 
         </classes>
     </test>

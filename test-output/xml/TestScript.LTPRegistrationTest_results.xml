@@ -4,62 +4,62 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="181.608">
+           time="139.786">
   <properties />
   
   
-            <testcase name="RegistrationData" time="0.847" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.578" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.377" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.746" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.288" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.822" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.335" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.749" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.559" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.635" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.636" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.537" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.416" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.989" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="19.831" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.601" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.587" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.603" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="17.728" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.401" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.202" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.588" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.868" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.569" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="23.903" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.558" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.140" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.761" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.351" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.448" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.620" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.916" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="36.449" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="18.269" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.873" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.891" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.899" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.618" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.862" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="3.259" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.659" classname="TestScript.LTPRegistrationTest" />
+            <testcase name="RegistrationData" time="0.419" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="1.047" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="17.649" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.367" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.786" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="23.741" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.202" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.800" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.499" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.383" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.363" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.355" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.803" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.461" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.413" classname="TestScript.LTPRegistrationTest" />
                 <testcase name="RegistrationData" time="0.653" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.668" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.893" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.848" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.867" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.699" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="24.683" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.750" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.010" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.652" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="1.319" classname="TestScript.LTPRegistrationTest" />
-                <testcase name="RegistrationData" time="0.598" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.340" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.424" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.396" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.315" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.480" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.446" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.857" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.550" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.392" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.298" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.490" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.381" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.359" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="22.929" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.067" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.512" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="23.668" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.319" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="18.153" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.437" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.500" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.410" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.980" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.491" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.437" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.609" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.718" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.368" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.292" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.424" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.762" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.461" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.306" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="11.335" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.381" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.213" classname="TestScript.LTPRegistrationTest" />
+                <testcase name="RegistrationData" time="0.345" classname="TestScript.LTPRegistrationTest" />
       
 </testsuite>

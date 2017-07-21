@@ -81,8 +81,19 @@ public class NMADetails {
         District.sendKeys(district);
     }
 
+    public WebElement getDistrict()
+    {
+        return District;
+    }
+
     public void setMonumentName(String monumentName) {
         MonumentName.sendKeys(monumentName);
+    }
+
+    public WebElement getMonumentName()
+    {
+       return MonumentName;
+
     }
 
     public void setRemark(String remark) {
@@ -90,9 +101,20 @@ public class NMADetails {
     }
     public void setHeightInExcludingMumty(String heightInExcludingMumty) {
         HeightInExcludingMumty.sendKeys(heightInExcludingMumty);
+
+    }
+
+    public WebElement getHeightInExcludingMumty()
+    {
+        return  HeightInExcludingMumty;
     }
     public void setHeightMumty(String heightMumty) {
         HeightMumty.sendKeys(heightMumty);
+    }
+
+    public WebElement getHeightMumty()
+    {
+        return HeightMumty;
     }
 
     public void setApproximateDate(String approximateDate) {
@@ -101,6 +123,12 @@ public class NMADetails {
     public void setApproximateDuration(String approximateDuration) {
         ApproximateDuration.sendKeys(approximateDuration);
     }
+
+
+    public WebElement getApproximateDuration()
+    {
+    return     ApproximateDuration;
+    }
     public void setBasementDetails(String basementDetails) {
         BasementDetails.sendKeys(basementDetails);
     }
@@ -108,15 +136,24 @@ public class NMADetails {
     public void setNumberOfStoreys(String numberOfStoreys) {
         NumberOfStoreys.sendKeys(numberOfStoreys);
     }
+
+    public WebElement getNumberOfStoreys()
+    {return NumberOfStoreys;}
     public void setRoaddetails(String roaddetails) {
         Roaddetails.sendKeys(roaddetails);
     }
     public void setOpenSpace(String openSpace) {
         OpenSpace.sendKeys(openSpace);
     }
+
+    public WebElement getOpenSpace()
+    {return OpenSpace;}
     public void setStatusModernBuilding(String statusModernBuilding) {
         StatusModernBuilding.sendKeys(statusModernBuilding);
     }
+
+    public WebElement getStatusModernBuilding()
+    {return StatusModernBuilding;}
 
     public void setMonumentinLimitof(String monumentinLimitof) {
         Select combo=new Select(MonumentinLimitof);
@@ -127,17 +164,34 @@ public class NMADetails {
         MaximumheightBuilindg.sendKeys(maximumheightBuilindg);
     }
 
+    public WebElement getMaximumheightBuilindg()
+    {
+        return MaximumheightBuilindg;
+    }
+
     public void setDistanceProtectedbouewall(String distanceProtectedbouewall) {
         DistanceProtectedbouewall.sendKeys(distanceProtectedbouewall);
     }
 
+    public WebElement getDistanceProtectedbouewall()
+    {
+        return DistanceProtectedbouewall;
+    }
     public void setDistancMonumen(String distancMonumen) {
         DistancMonumen.sendKeys(distancMonumen);
+    }
+
+    public WebElement getDistancMonumen()
+    {
+        return DistancMonumen;
     }
 
     public void setLocalityt(String localityt) {
         Locality.sendKeys(localityt);
     }
+
+    public WebElement getLocality()
+    {return Locality;}
     public void setTaluka(String taluka) {
         Taluka.sendKeys(taluka);
     }

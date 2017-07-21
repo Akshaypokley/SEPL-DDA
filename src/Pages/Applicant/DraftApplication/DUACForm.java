@@ -1,5 +1,6 @@
 package Pages.Applicant.DraftApplication;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,8 @@ public class DUACForm {
     @FindBy(xpath = ".//*[@id='liDUACForm']")
     WebElement DUACText;
 
+    @FindBy(id= "txtConsultantName")
+    WebElement NameText;
     @FindBy(xpath = ".//*[@id='txtProposalName']")
     WebElement  Nameoftheproposal;
 
@@ -76,15 +79,35 @@ public class DUACForm {
         LandLine.sendKeys(landLine);
 
     }
+public  void setNameText(String nameText)
+{NameText.sendKeys(nameText);}
 
+public WebElement getNameText()
+{
+    return NameText;
+}
+    public WebElement getLandLine()
+    {
+        return LandLine;
+    }
     public void setArchiteLandLine(String architeLandLine)
     {
         ArchiteLandLine.sendKeys(architeLandLine);
 
     }
+    public WebElement getArchiteLandLine()
+    {
+        return ArchiteLandLine;
+    }
     public void  setAddress(String address)
     {
         Address.sendKeys(address);
+    }
+
+    public  WebElement getAddress()
+    {
+        return Address;
+
     }
     public WebElement getDrawiText()
     {
@@ -98,5 +121,10 @@ public class DUACForm {
     public void setNameoftheproposal(String nameoftheproposal)
     {
         Nameoftheproposal.sendKeys(nameoftheproposal);
+    }
+
+    public WebElement getNameoftheproposal()
+    {
+        return Nameoftheproposal;
     }
 }

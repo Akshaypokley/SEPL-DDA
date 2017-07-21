@@ -1062,7 +1062,7 @@ public class LTPRegistrationTest {
                                     Result="pass";
                                     break;
                                 case "Date":
-                                    DateFun(driver, "14/7/2017");
+                                    DateFun(driver, "19/7/2017");
                                     Result="pass";
 
 

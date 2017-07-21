@@ -77,8 +77,14 @@ public class ArchDraftTest {
     static DUACForm duacForm;
     static NMADetails nmaDetails;
  static    String FilePath = "E:\\Akshay85\\DDAProject\\DDA_addition CASE.dwg";
-    static    String FilePath2 = "E:\\Akshay85\\MIDC\\vb.pdf";
+    static    String FilePath2 = "E:\\Akshay85\\13.7.png";
+    static    String FilePath3 = "E:\\Akshay85\\13.7.png";
     static AttachDrawing attachDrawing;
+    static final java.util.regex.Pattern String = java.util.regex.Pattern.compile("^[A-Za-z, ]++$");
+
+    static final java.util.regex.Pattern Alphnu = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
+    static final java.util.regex.Pattern Num = java.util.regex.Pattern.compile("^[0-9]++$");
+
     static final java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
     @BeforeTest
     public  void ExcelWdata() throws IOException, BiffException, WriteException {
@@ -194,6 +200,7 @@ public class ArchDraftTest {
             driver = openBrowser("chrome");
             GetUrl("url");
             LogFunction(driver);
+
             Menu menu=new Menu(driver);
             menu.ClickDraftlink();
             driver.switchTo().frame("ifrmListing");
@@ -236,6 +243,12 @@ public class ArchDraftTest {
                             driver.switchTo().frame("IframeDUACForm");
                             Result="pass";
                             break;
+
+                        case "Submit":
+
+                            duacForm.SaveDuacFormDetails();
+                            Result="pass";
+                            break;
                             /***************************NMA Script********************************/
                         case "NMA details":
                              nmaDetails=new NMADetails(driver);
@@ -243,7 +256,10 @@ public class ArchDraftTest {
                             driver.switchTo().frame("IframeNMADetails");
                             Result="pass";
                             break;
-
+                        case "NMA submit":
+                      driver.findElement(By.id("Button1")).click();
+                            Result="pass";
+                            break;
                         case "Signature Documents":
                             driver.findElement(By.xpath(".//*[@id='Button3']")).click();
                             BeforeWH(driver);
@@ -255,14 +271,37 @@ public class ArchDraftTest {
                             Thread.sleep(6000);
                             AttachFuntn(driver, FilePath2);
                             Thread.sleep(700);
-                            break;
+                           driver.switchTo().window(WinHandleBefore2);
+                       //     System.out.println(driver.switchTo().window(WinHandleBefore1).getTitle());
+                            System.out.println(driver.switchTo().defaultContent().getTitle());
 
+                            break;
                         case "Modern Constrution Images":
+                            driver.findElement(By.xpath(".//*[@id='btnDWGPDFAttach1']")).click();
+                            BeforeWH(driver);
+                            driver.findElement(By.xpath(".//*[@id='btnAttached']")).click();
+                            BeforeWH(driver);
+                            Thread.sleep(6000);
+                            WebElement ss4 = driver.findElement(By.id("RadAsyncUpload1file0"));
+                            ss4.click();
+                            Thread.sleep(6000);
+                            AttachFuntn(driver, FilePath2);
+                            Thread.sleep(700);
+                            System.out.println(driver.switchTo().window(WinHandleBefore1).getTitle());
 
                             break;
-
                         case "Google Earth Images":
-
+                            driver.findElement(By.xpath(".//*[@id='btnDWGPDFAttach2']")).click();
+                            BeforeWH(driver);
+                            driver.findElement(By.xpath(".//*[@id='btnAttached']")).click();
+                            BeforeWH(driver);
+                            Thread.sleep(6000);
+                            WebElement ss5 = driver.findElement(By.id("RadAsyncUpload1file0"));
+                            ss5.click();
+                            Thread.sleep(6000);
+                            AttachFuntn(driver, FilePath3);
+                            Thread.sleep(700);
+                            System.out.println(driver.switchTo().window(WinHandleBefore1).getTitle());
                             break;
                         /***************************NMA Script********************************/
 
@@ -296,14 +335,10 @@ public class ArchDraftTest {
 
 
                         case "ApplicantInfo":
-                            /*System.out.println("1");
-                            WebElement elements = driver.findElement(By.xpath("//html/body/form/div[4]//li[2]/a"));
-                            Thread.sleep(3000L);
-                            JavascriptExecutor js = (JavascriptExecutor) driver;
-                            int yPosition = elements.getLocation().getY();
-                            js.executeScript("window.scroll (0, " + yPosition + ") ");
-                            Thread.sleep(3000L);
-                            driver.findElement(By.xpath("//html/body/form/div[4]//li[2]/a")).click();*/
+
+
+
+                            driver.findElement(By.xpath("//html//body//form//div[4]"));
                     }
                     break;
                 case "SELECT":
@@ -334,10 +369,184 @@ public class ArchDraftTest {
                         /***************************NMA Script********************************/
                         case "Monument Name":
                            nmaDetails.setMonumentName(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue2 =nmaDetails.getMonumentName().getAttribute("value");
+                                    if (fieldValue2.equals(value))
+                                        if(!Alphnu.matcher(fieldValue2).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue2 =nmaDetails.getMonumentName().getAttribute("value");
+                                if (fieldValue2.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue2.equals(value)) {
+                                        if (!Alphnu.matcher(fieldValue2).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue2);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
                             break;
 
                         case "District":
                             nmaDetails.setDistrict(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue = nmaDetails.getDistrict().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!String.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = nmaDetails.getDistrict().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!String.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
                             break;
 
                         case "Taluka":
@@ -345,71 +554,1125 @@ public class ArchDraftTest {
                             break;
                         case "Distance from Protected boundery Wall":
                             nmaDetails.setDistanceProtectedbouewall(value);
+                            final String fieldValue4 = nmaDetails.getDistanceProtectedbouewall().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue4);
+                            if (fieldValue4.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue4.equals(value)||fieldValue4.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue4).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue4);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
                         case "Locality":
                             nmaDetails.setLocalityt(value);
-                            System.out.println(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue = nmaDetails.getLocality().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!String.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = nmaDetails.getLocality().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!String.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
                             break;
 
                         case "Distance from Monument(Mtr.)":
                             nmaDetails.setDistancMonumen(value);
+                            final String fieldValue6 = nmaDetails.getMonumentName().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue6);
+                            if (fieldValue6.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue6.equals(value)||fieldValue6.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue6).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue6);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
 
                         case "Maximum height of Existing Builindg":
                             nmaDetails.setMaximumheightBuilindg(value);
+                            final String fieldValue5 = nmaDetails.getMaximumheightBuilindg().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue5);
+                            if (fieldValue5.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue5.equals(+0+value)||fieldValue5.equals(value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue5).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue5);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
 
                         case "Monument in Limit":
                             nmaDetails.setMonumentinLimitof(value);
+                            Result="pass";
                             break;
                         case "Status of Construction of Modern Building":
                             nmaDetails.setStatusModernBuilding(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue =nmaDetails.getStatusModernBuilding().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!Alphnu.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = nmaDetails.getStatusModernBuilding().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!Alphnu.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
+
                             break;
 
                         case "pen Space or Parking area":
                             nmaDetails.setOpenSpace(value);
+                            final String fieldValue8 = nmaDetails.getOpenSpace().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue8);
+                            if (fieldValue8.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue8.equals(value)||fieldValue8.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue8).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue8);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
 
                         case "Road details":
                             nmaDetails.setRoaddetails(value);
+                            Result="pass";
                             break;
 
                         case "Number Of Storeys":
                             nmaDetails.setNumberOfStoreys(value);
+                            final String fieldValue9 = nmaDetails.getNumberOfStoreys().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue9);
+                            if (fieldValue9.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue9.equals(value)||fieldValue9.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue9).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue9);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
                         case "Basement Details":
                             nmaDetails.setBasementDetails(value);
+                            Result="pass";
                             break;
 
                         case "Approximate Duration":
                             nmaDetails.setApproximateDuration(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue =nmaDetails.getApproximateDuration().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!Alphnu.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = duacForm.getNameoftheproposal().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!Alphnu.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
+
                             break;
 
                         case "Approximate Date":
                             nmaDetails.setApproximateDate(value);
+                            Result="pass";
                             break;
 
                         case "Height In Metres Including Mumty Parapet Water Storage Tank":
+
                             nmaDetails.setHeightMumty(value);
+                            final String fieldValue10 = nmaDetails.getHeightMumty().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue10);
+                            if (fieldValue10.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue10.equals(value)||fieldValue10.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue10).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue10);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
 
                         case "HeightIn Metres Excluding Mumty Parapet Water Storage Tank":
                             nmaDetails.setHeightInExcludingMumty(value);
+                            final String fieldValue11 = nmaDetails.getHeightInExcludingMumty().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue11);
+                            if (fieldValue11.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue11.equals(value)||fieldValue11.equals(+0+value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue11).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue11);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
                             break;
 
                         case "Remark":
                             nmaDetails.setRemark(value);
+                            Result="Pass";
                             break;
                         /*************************** END NMA Script********************************/
+                        case "Name":
+                            duacForm.setNameText(value);
+                            try {
 
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue = duacForm.getNameText().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!String.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = duacForm.getNameText().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!String.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
+
+                            break;
+
+                        case "Address":
+                           duacForm.setAddress(value);
+                           Result="pass";
+                            break;
                         case "Name of proposal":
-                            duacForm.setNameoftheproposal(value);Result = "pass";
+                            duacForm.setNameoftheproposal(value);
+                            try {
+
+                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                    final String fieldValue =duacForm.getNameoftheproposal().getAttribute("value");
+                                    if (fieldValue.equals(value))
+                                        if(!Alphnu.matcher(fieldValue).matches()){
+
+                                            Result = "Pass";
+                                        } else {
+                                            Result = "fail";
+                                        }
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+
+                                final String fieldValue = duacForm.getNameoftheproposal().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!Alphnu.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+                            }
+
                             break;
                         case "Landline No":
-                            duacForm.setLandLine(value);Result = "pass";
+                            duacForm.setLandLine(value);
+                           /* final String fieldValue12 = duacForm.getLandLine().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue12);
+                            if (fieldValue11.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue12.equals(value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue12).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue12);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }*/
+
                             break;
                         case "Architect Landline No":
-                            duacForm.setArchiteLandLine(value);Result = "pass";
+                            duacForm.setArchiteLandLine(value);
+                            final String fieldValue13 = duacForm.getArchiteLandLine().getAttribute("value");
+                            System.out.println(value);
+                            System.out.println(fieldValue13);
+                            if (fieldValue13.isEmpty()) {
+                                try {
+                                    if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                    } else {
+                                        Alert alert = driver.switchTo().alert();
+                                        Actual = driver.switchTo().alert().getText();
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }//System.out.println(Actual);
+                                        //    Thread.sleep(50);
+                                        alert.accept();
+
+                                    }
+
+                                } catch (Throwable e) {
+                                }
+
+                            } else {
+                                if (fieldValue13.equals(value)) {
+                                    //   System.out.println(value);
+                                    if (!Num.matcher(fieldValue13).matches()) {
+                                        try {
+                                            if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            } else {
+                                                Alert alert = driver.switchTo().alert();
+                                                Actual = driver.switchTo().alert().getText();
+                                                if (Actual.equals(Expeted)) {
+                                                    Result = "pass";
+                                                } else {
+                                                    Result = "Fail";
+                                                }
+                                                //      System.out.println(Actual);
+                                                //    Thread.sleep(50);
+                                                alert.accept();
+
+                                            }
+
+                                        } catch (Throwable e) {
+                                            Actual = "Alert message not display .";
+                                            Result = "Fail";
+                                        }
+                                    } else {
+
+                                        Result = "pass";
+                                        //System.out.println(fieldValue4);
+
+                                        //  System.out.println(Result);
+                                    }
+                                } else {
+
+                                    if (Actual.equals(Expeted)) {
+                                        System.out.println(fieldValue13);
+                                        Result = "pass";
+                                    } else {
+                                        Result = "Fail";
+                                        System.out.println(Actual);
+                                    }
+                                }
+                            }
 
 
                     }

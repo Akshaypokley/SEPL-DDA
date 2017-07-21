@@ -14,7 +14,7 @@ public class ApplicantInfo {
 
     WebDriver driver;
 
-    @FindBy(id= "divapplication")
+    @FindBy(xpath= "//html//body//form//div[4]//div[@class='application-notice']")
     WebElement InfoText;
 
 
@@ -49,8 +49,8 @@ public class ApplicantInfo {
     public ApplicantInfo (WebDriver driver)
     { this.driver=driver;
         PageFactory.initElements(driver,this);
-      /*  if(!InfoText.isDisplayed())
-            throw  new IllegalStateException("This is not login page");*/
+      if(!InfoText.isDisplayed())
+            throw  new IllegalStateException("This is not login page");
     }
 
     public WebElement getInfoText()
