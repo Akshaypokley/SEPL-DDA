@@ -27,6 +27,7 @@ public class NMADetails {
     @FindBy(xpath = ".//*[@id='txtLocality']")
     WebElement Locality;
 
+
     @FindBy(xpath = ".//*[@id='txtDistancefromMonumentMTR']")
     WebElement DistancMonumen ;
 
@@ -177,6 +178,7 @@ public class NMADetails {
     {
         return DistanceProtectedbouewall;
     }
+
     public void setDistancMonumen(String distancMonumen) {
         DistancMonumen.sendKeys(distancMonumen);
     }

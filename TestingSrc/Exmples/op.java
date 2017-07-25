@@ -9,9 +9,13 @@ import java.util.regex.Pattern;
 public class op {
     public static void main(String[] args)
     {
-    final String input = "ds1fsdf";
+    final String input = "dsfsdf89o9";
     final String gh = "d443";
         final String Email = "A@g.com";
+        final String Flotw = "23.D";
+
+        final Pattern Flot = Pattern.compile("^[+-]?([0-9]*[.])?[0-9]++$");
+
     final Pattern pattern = Pattern.compile("^[A-Za-z,0-9 ]++$");
 
     final  Pattern pattern2 = Pattern.compile("^[0-9]++$");
@@ -34,5 +38,11 @@ public class op {
     }else {
         System.out.println("valid String");
     }
+
+        if (!Flot.matcher(Flotw).matches()) {
+            System.out.println("Invalid Flot Nm");
+        }else {
+            System.out.println("valid Flot Nm");
+        }
 }
 }

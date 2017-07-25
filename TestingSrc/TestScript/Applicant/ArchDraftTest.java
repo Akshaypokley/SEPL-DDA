@@ -82,8 +82,8 @@ public class ArchDraftTest {
     static AttachDrawing attachDrawing;
     static final java.util.regex.Pattern String = java.util.regex.Pattern.compile("^[A-Za-z, ]++$");
 
-    static final java.util.regex.Pattern Alphnu = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
-    static final java.util.regex.Pattern Num = java.util.regex.Pattern.compile("^[0-9]++$");
+    static final java.util.regex.Pattern Alphnu = java.util.regex.Pattern.compile("^[A-Za-z,0-9 ]++$");
+    static final java.util.regex.Pattern Num = java.util.regex.Pattern.compile("^[+-]?([0-9]*[.])?[0-9]++$");
 
     static final java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("^[A-Za-z,0-9  ]++$");
     @BeforeTest
@@ -219,7 +219,8 @@ public class ArchDraftTest {
 
             switch (keyword.toUpperCase()) {
                 case "CLICK":
-                    String WinHandleBefore1 = driver.getWindowHandle();   String WinHandleBefore2 = driver.getWindowHandle();
+                    String WinHandleBefore1 = driver.getWindowHandle();
+                    String WinHandleBefore2 = driver.getWindowHandle();
 
                     switch (objectName) {
                         case "FileNo":
@@ -371,12 +372,13 @@ public class ArchDraftTest {
                            nmaDetails.setMonumentName(value);
                             try {
 
-                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                               /* if ((ExpectedConditions.alertIsPresent()) == null) {
                                     final String fieldValue2 =nmaDetails.getMonumentName().getAttribute("value");
                                     if (fieldValue2.equals(value))
-                                        if(!Alphnu.matcher(fieldValue2).matches()){
 
-                                            Result = "Pass";
+                                        if(!Alphnu.matcher(fieldValue2).matches()){
+                                            System.out.println(fieldValue2);
+                                            Result = "pass";
                                         } else {
                                             Result = "fail";
                                         }
@@ -386,7 +388,7 @@ public class ArchDraftTest {
                                     Actual = driver.switchTo().alert().getText();
                                     Thread.sleep(300);
                                     alert.accept();
-                                }
+                                }*/
 
                                 final String fieldValue2 =nmaDetails.getMonumentName().getAttribute("value");
                                 if (fieldValue2.isEmpty()) {
@@ -418,10 +420,12 @@ public class ArchDraftTest {
                                 } else {
                                     if (fieldValue2.equals(value)) {
                                         if (!Alphnu.matcher(fieldValue2).matches()) {
+                                            System.out.println(fieldValue2);
                                             try {
                                                 if ((ExpectedConditions.alertIsPresent()) == null) {
                                                     Actual = "Alert message not display.";
                                                     Result = "Fail";
+                                                    System.out.println("5");
                                                 } else {
                                                     Alert alert = driver.switchTo().alert();
                                                     Actual = driver.switchTo().alert().getText();
@@ -462,12 +466,12 @@ public class ArchDraftTest {
                             nmaDetails.setDistrict(value);
                             try {
 
-                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                               /* if ((ExpectedConditions.alertIsPresent()) == null) {
                                     final String fieldValue = nmaDetails.getDistrict().getAttribute("value");
                                     if (fieldValue.equals(value))
                                         if(!String.matcher(fieldValue).matches()){
 
-                                            Result = "Pass";
+                                            Result = "pass";
                                         } else {
                                             Result = "fail";
                                         }
@@ -478,7 +482,7 @@ public class ArchDraftTest {
                                     Thread.sleep(300);
                                     alert.accept();
                                 }
-
+*/
                                 final String fieldValue = nmaDetails.getDistrict().getAttribute("value");
                                 if (fieldValue.isEmpty()) {
                                     try {
@@ -551,6 +555,89 @@ public class ArchDraftTest {
 
                         case "Taluka":
                             nmaDetails.setTaluka(value);
+
+                            try {
+
+                             /* if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                } else {
+                                    Alert alert = driver.switchTo().alert();
+
+                                    Actual = driver.switchTo().alert().getText();
+                                    Thread.sleep(300);
+                                    alert.accept();
+                                }
+*/
+                                final String fieldValue = nmaDetails.getDistrict().getAttribute("value");
+                                if (fieldValue.isEmpty()) {
+                                    try {
+                                        if ((ExpectedConditions.alertIsPresent()) == null) {
+
+                                        } else {
+                                            Alert alert = driver.switchTo().alert();
+
+                                            Actual = driver.switchTo().alert().getText();
+                                            Thread.sleep(300);
+                                            alert.accept();
+                                            if (Actual.equals(Expeted)) {
+                                                Result = "pass";
+                                            } else {
+                                                Result = "Fail";
+                                            }
+                                            System.out.println(Actual);
+                                            //    Thread.sleep(50);
+
+                                        }
+
+                                    } catch (Throwable e) {
+                                        Actual = "Alert message not display.";
+                                        Result = "Fail";
+                                    }
+
+
+                                } else {
+                                    if (fieldValue.equals(value)) {
+                                        if (!String.matcher(fieldValue).matches()) {
+                                            try {
+                                                if ((ExpectedConditions.alertIsPresent()) == null) {
+                                                    Actual = "Alert message not display.";
+                                                    Result = "Fail";
+                                                } else {
+                                                    Alert alert = driver.switchTo().alert();
+                                                    Actual = driver.switchTo().alert().getText();
+                                                    if (Actual.equals(Expeted)) {
+                                                        Result = "pass";
+                                                    } else {
+                                                        Result = "Fail";
+                                                    }
+                                                    System.out.println(Actual);
+                                                    //    Thread.sleep(50);
+                                                    alert.accept();
+
+                                                }
+
+                                            } catch (Throwable e) {
+                                                Actual = "Alert message not display .";
+                                                Result = "Fail";
+                                            }
+                                        } else {
+                                            Result = "pass";
+                                            System.out.println(fieldValue);
+                                            System.out.println(Result);
+                                        }
+                                    } else {
+                                        if (Actual.equals(Expeted)) {
+                                            Result = "pass";
+                                        } else {
+                                            Result = "Fail";
+                                        }
+                                    }
+                                }
+                            } catch (Throwable e) {
+
+
+                            }
+
                             break;
                         case "Distance from Protected boundery Wall":
                             nmaDetails.setDistanceProtectedbouewall(value);
@@ -715,7 +802,7 @@ public class ArchDraftTest {
 
                         case "Distance from Monument(Mtr.)":
                             nmaDetails.setDistancMonumen(value);
-                            final String fieldValue6 = nmaDetails.getMonumentName().getAttribute("value");
+                            final String fieldValue6 = nmaDetails.getDistancMonumen().getAttribute("value");
                             System.out.println(value);
                             System.out.println(fieldValue6);
                             if (fieldValue6.isEmpty()) {
@@ -862,7 +949,7 @@ public class ArchDraftTest {
                         case "Status of Construction of Modern Building":
                             nmaDetails.setStatusModernBuilding(value);
                             try {
-
+/*
                                 if ((ExpectedConditions.alertIsPresent()) == null) {
                                     final String fieldValue =nmaDetails.getStatusModernBuilding().getAttribute("value");
                                     if (fieldValue.equals(value))
@@ -878,7 +965,7 @@ public class ArchDraftTest {
                                     Actual = driver.switchTo().alert().getText();
                                     Thread.sleep(300);
                                     alert.accept();
-                                }
+                                }*/
 
                                 final String fieldValue = nmaDetails.getStatusModernBuilding().getAttribute("value");
                                 if (fieldValue.isEmpty()) {
