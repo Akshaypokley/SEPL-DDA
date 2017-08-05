@@ -316,7 +316,7 @@ public class ArchDraftTest {
                         case "Attach Drawing":
                             attachDrawing=new AttachDrawing(driver);
                             attachDrawing.ClickDrawingALink();
-
+/*
                             driver.switchTo().frame("ifrmDrawings");
 
                             attachDrawing.ClickSelectFile();
@@ -330,7 +330,7 @@ public class ArchDraftTest {
 
 
                             driver.switchTo().parentFrame();
-                          Result="pass";
+                          Result="pass";*/
 
                             break;
 
@@ -1432,6 +1432,7 @@ public class ArchDraftTest {
                         case "Remark":
                             nmaDetails.setRemark(value);
                             Result="Pass";
+                            driver.switchTo().parentFrame();
                             break;
                         /*************************** END NMA Script********************************/
                         case "Name":
